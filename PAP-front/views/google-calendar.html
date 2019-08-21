@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+  <script src='../js/locales-all.js'></script>
+<link rel="stylesheet" href="../css/googlecal.css" />
+<link href='../css/DayGridView.css' rel='stylesheet' />
+<link href='../css/listView.css' rel='stylesheet' />
+<script src='../js/FullCalendarCorePackage.js'></script>
+<script src='../js/FullCalendarInteractionPlugin.js'></script>
+<script src='../js/FullCalendarDayGridPlugin.js'></script>
+<script src='../js/FullCalendarListViewPlugin.js'></script>
+<script src='../js/FullCalendarGoogleCalendarPlugin.js'></script>
+<script src='../js/daterangepicker.js'></script>
+
+
+<script>
+
+
+
+</script>
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+
+      // 한국어
+       locale: 'ko',
+
+      plugins: [ 'interaction', 'dayGrid', 'list', 'googleCalendar' ],
+
+      // 달력날짜 클리 및 드레그
+      selectable: true,
+      selectHelper: true,
+      editable: true,
+      eventLimit: true,
+      droppable: true,
+      navLinks: true,
+
+
+
+
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,dayGridWeek,dayGridDay,listYear'
+      },
+
+      displayEventTime: true, // don't show the time column in list view
+
+      // THIS KEY WON'T WORK IN PRODUCTION!!!
+      // To make your own Google API key, follow the directions here:
+      // http://fullcalendar.io/docs/google_calendar/
+      googleCalendarApiKey: 'AIzaSyAf9FLGRYsetqTQlhM3XIDaS8OAFwBop88',
+
+
+      eventSources: [
+        {
+          //장재원 cal
+          googleCalendarId: 'j1jang0525@gmail.com'
+        },
+
+        {
+          // 이은진 cal
+          googleCalendarId: 'd4ubr8at8721nbgccufo24le5k@group.calendar.google.com',
+          className: '이은진꺼',
+          color: 'yellow',
+          textColor: 'black',
+
+
+        }
+
+      ],
+
+
+      // korean Holidays
+      // events: 'en.south_korea#holiday@group.v.calendar.google.com',
+
+
+
+
+
+
+      eventClick: function(arg) {
+        // opens events in a popup window
+        window.open(arg.event.url, 'google-calendar-event', 'width=700,height=600');
+
+        arg.jsEvent.preventDefault() // don't navigate in main tab
+      },
+
+      loading: function(bool) {
+        document.getElementById('loading').style.display =
+          bool ? 'block' : 'none';
+      }
+
+    });
+
+    calendar.render();
+  });
+
+
+
+  var calendar = new Calendar(calendarEl, {
+    events: [
+      { // this object will be "parsed" into an Event Object
+        title: "The Title", // a property!
+        start: "2019-10-01", // a property!
+        end: "2019-10-02" // a property! ** see important note below about 'end' **
+      }
+    ]
+  });
+
+
+
+
+</script>
+
+
+<style>
+
+  body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+  }
+
+  #loading {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+</style>
+</head>
+<body>
+
+  <div id='loading'>loading...</div>
+
+  <div id='calendar'></div>
+
+</body>
+</html>
