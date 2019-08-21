@@ -1,0 +1,17 @@
+{
+  "password":
+    ]
+}
+
+[
+  {
+    "member_id" : 0,
+    "member_img":"../img/member/user01.jpg",
+    "member_nickname": "starpap",
+    "member_email": "provider1@gmail.com",
+    "career": "커피전문점 2년",
+    "certi":"",
+    "introduce": "커피전문점 2년이랑 바리스타 자격증 1급을 가진 강사입니다.",
+    "member_join_date": 20190801,
+  }
+]
