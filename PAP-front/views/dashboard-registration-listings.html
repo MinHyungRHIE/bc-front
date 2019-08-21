@@ -335,49 +335,37 @@
 			<script>
 				var btnEle = document.getElementById("button preview");
 				btnEle.addEventListener("click",function () {
-					console.log("click 시작함");
 
-					// 우편번호
+				// 우편번호
 				var entry_postcode6 = document.getElementById("entry_postcode6").value;
-//					console.log("우편번호 :" + entry_postcode6);
-					entry_postcode6.toString();
+				entry_postcode6.toString();
 
 				// 도로명주소
 				var entry_address = document.getElementById("entry_address").value;
-//					console.log("도로명주소 :" + entry_address);
-					entry_address.toString();
+				entry_address.toString();
 
-					// 상세주소
-					var entry_details = document.getElementById("entry_details").value;
-//					console.log("상세주소 :" + entry_details);
-					entry_details.toString();
-					console.log("상세주소 내용 보기");
-//					console.log(typeof entry_details, entry_details);
-
-					// 지번주소
-					var entry_jibeon_address = document.getElementById("entry_jibeon_address").value;
-					console.log("지번주소 :" + entry_jibeon_address);
-					entry_jibeon_address.toString();
-
-					// 지번주소로 파싱
-					var spliceStr = entry_jibeon_address.split(' ');
-
-// 					객체생성
-					var sendJson = new Object();
-					sendJson.address_state = spliceStr[0];
-					sendJson.address_city = spliceStr[1];
-					sendJson.address_dong = spliceStr[2];
-					sendJson.address_detail = spliceStr[3]+ " " + entry_details;
-					var deT = spliceStr[3]+" "+entry_details;
-
-					console.log("==ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ======");
-					console.log(deT);
-					console.log("========ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ");
-
-					// JSON은 날짜데이터 가공 후 같이 보내기
+				// 상세주소
+				var entry_details = document.getElementById("entry_details").value;
+				entry_details.toString();
 
 
-//=====================		날짜 데이터 가져오기 ===========================
+				// 지번주소
+				var entry_jibeon_address = document.getElementById("entry_jibeon_address").value;
+				entry_jibeon_address.toString();
+
+				// 지번주소를 파싱
+				var spliceStr = entry_jibeon_address.split(' ');
+
+				// 					객체생성
+				var sendJson = new Object();
+				sendJson.address_state = spliceStr[0];
+				sendJson.address_city = spliceStr[1];
+				sendJson.address_dong = spliceStr[2];
+				sendJson.address_detail = spliceStr[3]+ " " + entry_details;
+
+				// JSON은 날짜데이터 가공 후 같이 보내기
+
+//=====================		날짜 데이터 가져오기        =============================================================
 
 					// 날짜 데이터를 가져오기
 					var datetimeString = document.getElementsByName("datetimes")[0].value;
@@ -409,14 +397,12 @@
 					var staDateFinal = DateConverter(staDate);
 					var endDateFinal = DateConverter(endDate);
 
-					console.log(typeof staDateFinal, staDateFinal);
-					console.log(typeof endDateFinal, endDateFinal);
-
 					// 주소가 저장된 object에 key value값으로 날짜데이터를 object에 넣기
 					sendJson.service_register_date = staDateFinal;
 					sendJson.service_end_date = endDateFinal;
 
 					// object를 JSON형태로 만들기
+
 					var jsonAddress = JSON.stringify(sendJson);
 
 					alert(jsonAddress);
