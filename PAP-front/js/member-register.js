@@ -1,22 +1,11 @@
 function customerRegister(){
-    var mock = false;
     var customerInfo = new Object();
     customerInfo.memberId = document.getElementById("username").value;
     customerInfo.memberPassword = document.getElementById("password1").value;
     customerInfo.memberEmail = document.getElementById("email").value;
     customerInfo.memberNickname = document.getElementById("nickname").value;
-    customerInfo.roleName = "CUSTOMER";
-    var jsonCustomer = JSON.stringify(customerInfo, null, 2);
-
-    $(function(){
-        if(mock){
-            makeXhr(jsonCustomer);
-        }
-        else{
-            Apis.postRequest("http://localhost:5000/todos", customerInfo);
-        }
-    })
-
+    customerInfo.roleName = "ROLE_CUSTOMER";
+    Apis.createMember(customerInfo);
 }
 
 var xhr;

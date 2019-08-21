@@ -4,7 +4,7 @@
 }());
 
 function baseUrl(path) {
-  const BASE_URL = 'http://localhost:9898';
+  const BASE_URL = 'http://localhost:5000';
   return `${BASE_URL}${path}`;
 }
 
@@ -62,7 +62,7 @@ function postRequest(path, body = {}) {
   } else {
     contentType = 'application/json; charset=UTF-8';
     data = JSON.stringify(body);
-    console.log(data);
+    console.log(data, "데이터 전송 성공!!!!!"  );
   }
   // Default options are marked with *
   return fetch(baseUrl(path), {
@@ -107,7 +107,7 @@ function putRequest(path, body = {}) {
 }
 
 function createTodo(todo) {
-  return postRequest('/todos', todo);
+  return postRequest("http://localhost:5000/todos", todo);
 }
 
 function deleteTodo(id) {
@@ -127,7 +127,7 @@ function toggleTodo(id) {
 }
 
 function createMember(member) {
-  return getRequest('')
+  return postRequest('/todos', member);
 }
 
 const Apis = {
