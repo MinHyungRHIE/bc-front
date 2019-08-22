@@ -115,7 +115,7 @@ function checkByte(form, limitByte) {
 
     // 입력된 바이트 수가 limitByte를 초과 할 경우 경고창 및 글자수 제한
     if (totalByte > limitByte / 2) {
-        if (confirm(limitByte / 2 + "글자까지 입력 가능합니다.") == true) {
+        if (confirm(limitByte / 2 + "글자까지 입력 가능합니다.") === true) {
 
             document.getElementById("introduce").value = note.slice(0, limitByte / 2);
             $('#introbyte').text(limitByte / 2);
@@ -231,90 +231,126 @@ function checkCerti() {
 //result: 변경 버튼 누를 시, 위의 세가지가 검사되어 데이터가 JSON으로 데이터 형식으로 변환되어야 한다.
 //배열에 넣어서 JSON으로!
 
-//입력여부
-// // if (!checkPassword(form.newpassword.value, form.confirmpassword.value)) {
-//     // 	return false;
-//     // }
 
 document.getElementById('buttonPassword').addEventListener('click', button_password); //버튼 누를시 버튼 함수와 연결
 
 function button_password() {
 
-    var check1 = tocheck_id_pw;
-    var check2 = tocheck_newpw(document.getElementById("newpassword").value, document.getElementById("confirmpassword").value);
-    var check3 = tocheck_pw_newpw;
-
-    if (//check1 == true &&
-        check2 == true
-    //&& check3== true
-    ) {
+    if (CheckPassword()===true) {
         //배열 생성
         const dataArr = new Array();
 
         //배열에 input값 : 패쓰워드 수정정보 넣는다
 
-        dataArr.push(
-            document.getElementById("member_Password").value, document.getElementById("newpassword").value,
-            document.getElementById("confirmpassword").value);
-        var datatmp = {"member_Password": dataArr[0], "newpassword": dataArr[1], "confirmpassword": dataArr[2]};
+        dataArr.push(document.getElementById("newpassword").value);
+        var datatmp = {"member_Password": dataArr[0]};
+
         const dataJson = JSON.stringify(datatmp);
 
         alert("비밀번호 수정 완료! ");
 
+        console.log(dataJson);
+
         return dataJson;
+
+    }else{
+        alert("비밀번호 수정 오류! 다시 확인해주세요");
     }
-    //보냅시다~ 나중에
-    //apis에 생성한 addprofile함수에 인자로 dataObj를 넣는다.
-    //addprofile함수는 return 값이 postRequest().
-    //postRequest()는 값을 json문자열로 바꾸고 리턴값 fetch던데..
-    //Apis.postRequest('/' , dataArr);
 
 };//4) 버튼 눌렀을 때 JSON으로 변경해주는 함수
 
 
 //1) 로그인 되어있는 비밀번호 데이터 불러와서 현재 비밀번호의 입력값과 일치하는지 비교
-function tocheck_id_pw(member_Password) {
 
-
-    checkpw = JSON
-};
 
 //2) 새 비밀번호,새 비밀번호 확인 입력 함수_ 1.입력여부,2.유효성검사,3.새 비밀번호,새 비밀번호 일치확인
-function tocheck_newpw(newpassword, confirmpassword) {
+//1.입력여부+3.변경비밀번호 일치 확인
+function checkPassword(prepassword) {
+    var prepassword = document.getElementById("member_Password").value;
 
-    //비밀번호가 입력되었는지 확인하기
-    if (!checkExistData(newpassword, "비밀번호를"))
-        return false;
-    //비밀번호 확인이 입력되었는지 확인하기
-    if (!checkExistData(confirmpassword, "비밀번호 확인을"))
-        return false;
-
-    var newpasswordRegExp = /^[a-zA-z0-9]{4,12}$/; //비밀번호 길이 체크(8~16자 까지 허용)
-
-    if (!newpasswordRegExp.test(newpassword)) {
-        alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
-        form.newpassword.value = "";
-        form.newpassword.focus();
+    if (prepassword == "") {
+        alert("비밀번호를 입력하세요");
         return false;
     }
-    //변경 비밀번호와 변경 비밀번호 확인이 맞지 않다면..
-    if (newpassword != confirmpassword) {
-        alert("두 비밀번호가 맞지 않습니다.");
-        form.newpassword.value = "";
-        form.confirmpassword.value = "";
-        form.confirmpassword.focus();
+    if(prepassword != callPW()){
+        alert("올바른 현재 비밀번호를 입력해주세요");
         return false;
     }
-    return true; //확인이 완료되었을 때
+    return true;
 };
 
-// //3)현재비밀번호와 변경비밀번호 비교
-function tocheck_pw_newpw(member_Password, confirmpassword) {
+function checkNewPassword(newpw){
+    var newpw = document.getElementById("newpassword").value;
 
-    var pw = member_Password;
-    var pwck = document.getElementById("confirmpassword").value;
+    if (newpw == "") {
+        alert("새 비밀번호를 입력하세요");
+        return false;
+    }else
+        return true;
+};
 
-    if (pw != pwck) {
+function checkConfirmPassword(confirmpw){
+    var newpw = document.getElementById("newpassword").value;
+
+    if(confirmpw == ""){
+        alert("새 비밀번호를 확인하세요");
         return false;
     }
+    if(newpw != confirmpw) {
+        alert("변경할 비밀번호가 일치하지 않습니다");
+        return false;
+    }
+    return true;
 };
+
+//입력값 여부, 일치 검사
+function CheckPassword(){
+
+    if (checkPassword(document.getElementById("member_Password").value)===false) {
+        return false;
+    }
+    if (checkNewPassword(document.getElementById("newpassword").value) === false) {
+        return false;
+    }
+    if (checkConfirmPassword(document.getElementById("confirmpassword").value) === false) {
+        return false;
+    }
+    return true;
+}
+
+//2.유효성검사
+function newPwValidity(val) {
+
+    //var newpasswordRegExp = /^[a-zA-z0-9]{4,12}$/; //비밀번호 길이 체크(8~16자 까지 허용)
+
+    if (val.length < 8 || val.length > 16) {
+        document.getElementById("new-pw-notify").innerHTML = "비밀번호를 8~16자까지 입력해주세요.";
+        document.getElementById("new-pw-notify").style.color = "red";
+        return false;
+    } else {
+        document.getElementById("new-pw-notify").innerHTML = "";
+    }
+};
+
+function confirmPwValidity(val) {
+
+    if (val.length < 8 || val.length > 16) {
+        document.getElementById("confirm-pw-notify").innerHTML = "비밀번호를 8~16자까지 입력해주세요.";
+        document.getElementById("confirm-pw-notify").style.color = "red";
+        return false;
+    } else {
+        document.getElementById("confirm-pw-notify").innerHTML = "";
+    }
+};
+//
+//
+// // //3)현재비밀번호와 변경비밀번호 비교
+// function tocheck_pw_newpw(member_Password, confirmpassword) {
+//
+//     var pw = member_Password;
+//     var pwck = document.getElementById("confirmpassword").value;
+//
+//     if (pw != pwck) {
+//         return false;
+//     }
+// };

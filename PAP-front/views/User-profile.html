@@ -27,10 +27,10 @@
 	<!-- Header -->
 	<div id="header" class="not-sticky">
 		<div class="container">
-			
+
 			<!-- Left Side Content -->
 			<div class="left-side">
-				
+
 				<!-- Logo -->
 				<div id="logo">
 <!--					<a href="index.html"><img src="../img/logo.png" alt=""></a>-->
@@ -145,12 +145,12 @@
 <!--									-->
 <!--							</div>-->
 <!--						</li>-->
-						
+
 					</ul>
 				</nav>
 				<div class="clearfix"></div>
 				<!-- Main Navigation / End -->
-				
+
 			</div>
 			<!-- Left Side Content / End -->
 
@@ -158,10 +158,10 @@
 			<div class="right-side">
 				<!-- Header Widget -->
 				<div class="header-widget">
-					
+
 					<!-- User Menu -->
 					<div class="user-menu">
-						<div class="user-name"><span><img src="../img/dashboard-avatar.jpg" alt=""></span>안녕하세요, #id </div>
+						<div class="user-name"><span><img id= "member_img" alt="" /></span>Hi! </div>
 						<ul>
 							<li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
 							<li><a href="dashboard-bookmarks.html"><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
@@ -194,7 +194,7 @@
 
 	<!-- Responsive Navigation Trigger -->
 	<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
-	
+
 	<div class="dashboard-nav">
 		<div class="dashboard-nav-inner">
 
@@ -204,7 +204,7 @@
 <!--				<li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>-->
 <!--				<li><a href="dashboard-wallet.html"><i class="sl sl-icon-wallet"></i> Wallet</a></li>-->
 			</ul>
-			
+
 			<ul data-submenu-title="Listings">
 <!--				<li><a><i class="sl sl-icon-layers"></i> My Listings</a>-->
 <!--					<ul>-->
@@ -216,7 +216,7 @@
 <!--				<li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>-->
 				<li><a href="dashboard-bookmarks.html"><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
 				<!-- <li><a href="dashboard-add-listing.html"><i class="sl sl-icon-plus"></i> Add Listing</a></li> -->
-			</ul>	
+			</ul>
 
 			<ul data-submenu-title="Account">
 				<li class="active"><a href="Provider-profile.html"><i class="sl sl-icon-user"></i> 내 프로필</a></li>
@@ -254,13 +254,13 @@
 			<!-- Profile -->
 			<div class="col-lg-6 col-md-12">
 					<div class="dashboard-list-box margin-top-0">
-					<h4 class="gray">내 프로필 변경</h4>
-						<div class="col-fs-6" style="text-align:right">가입일 : #가입일 </div>
-					<div class="dashboard-list-box-static">
+						<h4 class="gray">내 프로필 변경</h4>
+							<div class="col-fs-6" align="" style="color:#c8c8c8; font-size:0.8em">가입일 : <span id="member_join_date" style="color:#c8c8c8"></span></div>
+						<div class="dashboard-list-box-static">
 
 						<!-- Avatar -->
 						<div class="edit-profile-photo">
-							<img src="../img/user-avatar.jpg" alt="">
+							<span> <img id="member_img1" alt="" > </span>
 							<div class="change-photo-btn">
 								<div class="photoUpload">
 								    <span><i class="fa fa-upload"></i> 사진 업로드</span>
@@ -268,23 +268,25 @@
 								</div>
 							</div>
 						</div>
-	
+
 						<!-- 프로필 세부사항 -->
 						<div class="my-profile">
 
 							<label>닉네임</label>
-							<input type="text" name=${username} id="username" placeholder="닉네임을 입력하세요"  />
+							<input type="text" name=${member_nickname} id="member_nickname" placeholder="닉네임을 입력하세요" value="" onKeyUp="nickValidity(this.value)" />
+							<label id = "checknick" class="check"></label>
 
 <!--							<label> 전화번호</label>-->
-							<input type="text" name=${userphonenum} id="userphonenum" style="DISPLAY: none" placeholder="전화번호를 입력하세요" />
+<!--							<input type="text" name=${userphonenum} id="userphonenum" style="DISPLAY: none" placeholder="전화번호를 입력하세요" />-->
 
 							<label>E-mail</label>
-							<input type="email" name=${useremail} id="useremail" placeholder="E-mail을 입력하세요" />
+							<input type="email" name=${member_email} id="member_email" placeholder="E-Mail 을 입력하세요" onKeyUp="emailValidity(this.value)" />
+							<label id = "checkemail" class="check" ></label>
 
 							<label>자기소개</label>
-							<textarea name="notes" id="notes" cols="30" rows="10" onKeyUp="checkByte(this.form)"></textarea>
+							<textarea name="introduce" id="introduce" cols="30" rows="10" onKeyUp="checkByte(this.form, 500)"></textarea>
 
-							<p class="data_count" style="font-size: smaller"><em id="notesbyte" >0</em>/250 글자</p>
+							<p class="data_count" style="font-size: smaller"><em id="introbyte">0</em>/250 글자</p>
 
 <!--							<textarea name="notes"  cols="30" rows="10" >-->
 <!--								자기소개 입력란 입니다-->
@@ -299,7 +301,7 @@
 <!--							<label><i class="fa fa-google-plus"></i> Google+</label>-->
 <!--							<input placeholder="https://www.google.com/" type="text">-->
 						</div>
-	
+
 						<button id='buttonProfile' class='button margin-top-15'>내 프로필 수정</button>
 
 					</div>
@@ -315,13 +317,15 @@
 						<!-- Change Password -->
 						<div class="my-profile">
 							<label class="margin-top-0">현재 비밀번호</label>
-							<input type="password" name=${password} id="password" placeholder="현재 비밀번호 입력"  />
+							<input type="password" name=${member_Password} id="member_Password" placeholder="현재 비밀번호 입력"  />
 
 							<label>새 비밀번호</label>
-							<input type="password" name=${newpassword} id="newpassword" placeholder="새 비밀번호 입력"  />
+							<input type="password" name=${newpassword} id="newpassword" placeholder="새 비밀번호 입력" value="" onkeyup="newPwValidity(this.value)" />
+							<label id="new-pw-notify"></label>
 
 							<label>새 비밀번호 확인</label>
-							<input type="password" name=${confirmpassword} id="confirmpassword" placeholder="새 비밀번호 확인"  />
+							<input type="password" name=${confirmpassword} id="confirmpassword" placeholder="새 비밀번호 확인" value="" onkeyup="confirmPwValidity(this.value)" />
+							<label id="confirm-pw-notify"></label>
 
 							<button id='buttonPassword' class="button margin-top-15">비밀번호 변경</button>
 
@@ -363,11 +367,117 @@
 <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../js/tooltips.min.js"></script>
 <script type="text/javascript" src="../js/custom.js"></script>
-<!--<script type="text/javascript" src="../js/apis.js"></script>-->
+<script type="text/javascript" src="../views/User-profile.js"></script>
+<script type="text/javascript" src="../js/apis.js"></script>
 <!-- =============================================================================== -->
 
 <!--<script src="/js/apis.js"></script>-->
-<script type="text/javascript" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+
+	// =============== Loading & Parsing JSON ==================
+	var mock = true;
+	$(document).ready(function () {
+		if (mock) {
+			startXhr();
+			//startXhr2();
+		} else {
+			Apis.getRequest('/list');
+		}
+	});
+
+	var xhr;
+
+	function startXhr() {
+		xhr = new XMLHttpRequest();
+		xhr.open("GET", "../data/member_provider.json");
+		xhr.send();
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				if (xhr.status == 200) {
+					console.log("데이터 불러오기 성공");
+					serializeData();
+				} else {
+					console.log("데이터 불러오기 실패");
+				}
+			}
+		}
+	};
+
+	function serializeData() {
+		// var response = xhr.responseText;
+		// for(var i=0; i<response.length; i++){
+		//     for (var j=0; j<response[i].length; j++){
+		//         if(typeof response[i][j] ){
+		//         }
+		//     }
+		// }
+		var profileData = JSON.parse(xhr.responseText);
+
+		showServiceItem(profileData);
+	};
+
+	// =============== Loading & Parsing JSON / END ==================
+	// ==================== Tag & Value Mapping =======================
+	var member_id;
+
+	function showServiceItem(profileData) {
+		console.log(profileData);
+
+		if (mock) {
+			member_id = 0;
+		} else {
+			serviceNo = '${service-id}';
+		}
+
+		insertValue('member_nickname', profileData[member_id].member_nickname);
+		insertValue('member_email', profileData[member_id].member_email);
+		//insertValue('career', profileData[member_id].career);
+		//insertValue('certi', profileData[member_id].certi);
+		insertValue('introduce', profileData[member_id].introduce);
+
+		insertText('member_join_date', profileData[member_id].member_join_date);
+
+		insertProfileImgResource('member_img', profileData[member_id].member_img);
+
+		callPW(profileData[member_id].member_password);
+	};
+
+	// 1) 단일 값 맵핑
+	function insertValue(tag, column) {
+		if (column == null) {
+			document.getElementById(tag).setAttribute('placeholder', '입력하세요');
+		} else {
+			document.getElementById(tag).setAttribute('value', column);
+		}
+	};
+
+	function insertText(tag, column) {
+		document.getElementById(tag).appendChild(document.createTextNode(column));
+	};
+
+	// 2) 프로필 이미지 소스 맵핑 //로직 다시 짜보기(ClassName :콜랙션으로 됨)
+	function insertProfileImgResource(tag, column) {
+
+		//document.getElementsByClassName(tag).setAttribute('src', column);
+		document.getElementById(tag).setAttribute('src', column);
+		var id2 = (tag + "1");
+		document.getElementById(id2).setAttribute('src', column);
+		// const imgTag = document.getElementById(tag);
+		// const imgItem = document.createElement('img');
+		// imgItem.setAttribute('src', column);
+		// imgTag.appendChild(imgItem);
+	};
+
+	// // 3) 비밀번호 값 불러오기
+	function callPW(column) {
+		var callpassword = column;
+		return callpassword;
+	}
+	// ==================== Tag & Data Mapping / END =======================
+
+
+
+</script>
 </body>
 
 </html>

@@ -184,12 +184,12 @@
 
 </header>
 
-	<style>
-		.check {
-			font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-			font-size: 10px !important;
-		}
-	</style>
+<!--	<style>-->
+<!--		.check {-->
+<!--			font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;-->
+<!--			font-size: 10px !important;-->
+<!--		}-->
+<!--	</style>-->
 
 
 <div class="clearfix"></div>
@@ -265,7 +265,7 @@
 			<div class="col-lg-6 col-md-12">
 					<div class="dashboard-list-box margin-top-0">
 					<h4 class="gray">내 프로필 변경</h4>
-						<div class="col-fs-6" align="right" style="color:#c8c8c8; font-size:0.8em">가입일 : <span id="member_join_date" style="color:#c8c8c8"></span></div>
+						<div class="col-fs-6" align="" style="color:#c8c8c8; font-size:0.8em">가입일 : <span id="member_join_date" style="color:#c8c8c8"></span></div>
 					<div class="dashboard-list-box-static">
 
 						<!-- Avatar -->
@@ -287,7 +287,7 @@
 							<label id = "checknick" class="check"></label>
 
 <!--							<label> 전화번호</label>-->
-							<input type="text" name=${userphonenum} id="userphonenum" style="DISPLAY: none" placeholder="전화번호를 입력하세요" />
+<!--							<input type="text" name=${userphonenum} id="userphonenum" style="DISPLAY: none" placeholder="전화번호를 입력하세요" />-->
 
 							<label>E-mail</label>
 							<input type="email" name=${member_email} id="member_email" placeholder="E-Mail 을 입력하세요" onKeyUp="emailValidity(this.value)" />
@@ -332,14 +332,18 @@
 
 						<!-- Change Password -->
 						<div class="my-profile" id="my-profile-password">
+
 							<label class="margin-top-0">현재 비밀번호</label>
 							<input type="password" name=${member_Password} id="member_Password" placeholder="현재 비밀번호 입력"  />
+<!--							<label id="pw-notify"></label>-->
 
 							<label>새 비밀번호</label>
-							<input type="password" name=${newpassword} id="newpassword" placeholder="새 비밀번호 입력"  />
+							<input type="password" name=${newpassword} id="newpassword" placeholder="새 비밀번호 입력" value="" onkeyup="newPwValidity(this.value)" />
+							<label id="new-pw-notify"></label>
 
 							<label>새 비밀번호 확인</label>
-							<input type="password" name=${confirmpassword} id="confirmpassword" placeholder="새 비밀번호 확인"  />
+							<input type="password" name=${confirmpassword} id="confirmpassword" placeholder="새 비밀번호 확인" value="" onkeyup="confirmPwValidity(this.value)" />
+							<label id="confirm-pw-notify"></label>
 
 							<button id='buttonPassword' class="button margin-top-15">비밀번호 변경</button>
 
@@ -382,7 +386,7 @@
 <script type="text/javascript" src="../js/tooltips.min.js"></script>
 <script type="text/javascript" src="../js/custom.js"></script>
 <script type="text/javascript" src="../views/Provider-profile.js"></script>
-<!--<script type="text/javascript" src="../js/apis.js"></script>-->
+<script type="text/javascript" src="../js/apis.js"></script>
 <script type="text/javascript" src="../js/dropzone.js"></script>
 <!-- =============================================================================== -->
 
@@ -394,6 +398,7 @@
 	$(document).ready(function () {
 		if (mock) {
 			startXhr();
+			//startXhr2();
 		} else {
 			Apis.getRequest('/list');
 		}
@@ -414,24 +419,20 @@
 				}
 			}
 		}
-	}
+	};
 
 	function serializeData() {
 		// var response = xhr.responseText;
 		// for(var i=0; i<response.length; i++){
 		//     for (var j=0; j<response[i].length; j++){
 		//         if(typeof response[i][j] ){
-		//
 		//         }
 		//     }
 		// }
 		var profileData = JSON.parse(xhr.responseText);
-		var loginData = JSON.parse(xhr.responseText);
 
 		showServiceItem(profileData);
-
-
-	}
+	};
 
 	// =============== Loading & Parsing JSON / END ==================
 	// ==================== Tag & Value Mapping =======================
@@ -455,7 +456,9 @@
 		insertText('member_join_date', profileData[member_id].member_join_date);
 
 		insertProfileImgResource('member_img', profileData[member_id].member_img);
-	}
+
+		callPW(profileData[member_id].member_password);
+	};
 
 	// 1) 단일 값 맵핑
 	function insertValue(tag, column) {
@@ -464,11 +467,11 @@
 		} else {
 			document.getElementById(tag).setAttribute('value', column);
 		}
-	}
+	};
 
 	function insertText(tag, column) {
 		document.getElementById(tag).appendChild(document.createTextNode(column));
-	}
+	};
 
 	// 2) 프로필 이미지 소스 맵핑 //로직 다시 짜보기(ClassName :콜랙션으로 됨)
 	function insertProfileImgResource(tag, column) {
@@ -477,12 +480,20 @@
 		document.getElementById(tag).setAttribute('src', column);
 		var id2 = (tag + "1");
 		document.getElementById(id2).setAttribute('src', column);
-
 		// const imgTag = document.getElementById(tag);
 		// const imgItem = document.createElement('img');
 		// imgItem.setAttribute('src', column);
 		// imgTag.appendChild(imgItem);
 	};
+
+	// // 3) 비밀번호 값 불러오기
+	function callPW(column) {
+
+		var callpassword = column;
+
+		return callpassword;
+
+	}
 	// ==================== Tag & Data Mapping / END =======================
 
 </script>
