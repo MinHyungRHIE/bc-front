@@ -14,7 +14,7 @@ var xhr;
 
 function startXhr() {
     xhr = new XMLHttpRequest();
-    xhr.open("POST", "../login.json");
+    xhr.open("POST", "/login");
     console.log("데이터 불러오기 성공111");
     xhr.send();
 

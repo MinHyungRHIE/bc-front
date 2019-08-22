@@ -12,7 +12,6 @@ function loginIdValidity(val){
             document.getElementById("id-notify").innerHTML="";
         }
     }
-
     //아이디 길이 체크 (4~12자)
     if (val.length < 4 || val.length > 12) {
         document.getElementById("id-notify").innerHTML = "아이디를 4~12자까지 입력해주세요.";

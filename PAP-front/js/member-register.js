@@ -5,6 +5,7 @@ function customerRegister(){
     customerInfo.memberEmail = document.getElementById("email").value;
     customerInfo.memberNickname = document.getElementById("nickname").value;
     customerInfo.roleName = "ROLE_CUSTOMER";
+    console.log(mock);
     Apis.createMember(customerInfo);
 }
 
