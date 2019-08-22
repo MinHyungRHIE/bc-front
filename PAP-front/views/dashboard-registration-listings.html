@@ -266,7 +266,7 @@
 			</div>
 		</div>
 
-		<!-- Section -->
+		<!-- Calendar -->
 		<div class="add-listing-section margin-top-45">
 
 			<!-- Headline -->
@@ -434,6 +434,7 @@
 <script>
 
 	// Calendar Init
+	var dateToday = new Date();
 	$(function() {
 		$('input[name="datetimes"]').daterangepicker({
 
@@ -441,6 +442,7 @@
 			timePickerSeconds: true,
 			startDate: moment().startOf('hour'),
 			endDate: moment().startOf('hour').add(32, 'hour'),
+			minDate: dateToday,
 			locale: {
 				format: 'LLL',
 
