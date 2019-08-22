@@ -13,13 +13,13 @@ function button_myprofile(){
 
         //배열에 input값 : 프로필수정정보 넣는다
         dataArr.push(
-            document.getElementById("member_nickname").value,
-            document.getElementById("member_email").value,
-            document.getElementById("introduce").value
-        );
+            document.getElementById("member_nickname").value, document.getElementById("member_email").value,
+            document.getElementById("introduce").value, document.getElementById("career").value,
+            document.getElementById("certi").value);
 
         // {member_nickname:123, member_Email:11@daum.net, introduce:asdf}
-        var datatmp = {"member_nickname":dataArr[0], "member_email":dataArr[1], "introduce":dataArr[2]};
+        var datatmp = {"member_nickname":dataArr[0], "member_email":dataArr[1], "introduce":dataArr[2],
+            "career":dataArr[3], "certi":dataArr[4]};
 
         var dataJson = JSON.stringify(datatmp);
 
@@ -49,13 +49,13 @@ function checkAll() {
         return false;
     }
 
-    // if (checkCareer(document.getElementById('career').value) === false) {
-    //     return false;
-    // }
-    //
-    // if (checkCerti(document.getElementById('certi').value) === false) {
-    //     return false;
-    // }
+    if (checkCareer(document.getElementById('career').value) === false) {
+        return false;
+    }
+
+    if (checkCerti(document.getElementById('certi').value) === false) {
+        return false;
+    }
 
     if (checkIntro(document.getElementById('introduce').value) === false) {
         return false;
@@ -115,7 +115,7 @@ function checkByte(form, limitByte) {
 
     // 입력된 바이트 수가 limitByte를 초과 할 경우 경고창 및 글자수 제한
     if (totalByte > limitByte / 2) {
-        if (confirm(limitByte / 2 + "글자까지 입력 가능합니다.") == true) {
+        if (confirm(limitByte / 2 + "글자까지 입력 가능합니다.") === true) {
 
             document.getElementById("introduce").value = note.slice(0, limitByte / 2);
             $('#introbyte').text(limitByte / 2);
@@ -192,27 +192,27 @@ function nickValidity(val) {
 };
 
 
-// function checkCareer() {
-//     var text = document.getElementById("career").value;
-//
-//     if (text == "") {
-//         alert("경력을 입력해주세요!");
-//         return false;
-//     } else
-//         return true;
-//
-// };
+function checkCareer() {
+    var text = document.getElementById("career").value;
 
-// function checkCerti() {
-//     var text = document.getElementById("certi").value;
-//
-//     if (text == "") {
-//         alert("자격증을 입력해주세요!");
-//         return false;
-//     } else
-//         return true;
-//
-// };
+    if (text == "") {
+        alert("경력을 입력해주세요!");
+        return false;
+    } else
+        return true;
+
+};
+
+function checkCerti() {
+    var text = document.getElementById("certi").value;
+
+    if (text == "") {
+        alert("자격증을 입력해주세요!");
+        return false;
+    } else
+        return true;
+
+};
 
 
 
@@ -272,7 +272,7 @@ function checkPassword(prepassword) {
         alert("비밀번호를 입력하세요");
         return false;
     }
-    if(prepassword != callPW()){
+    if(prepassword != callpassword1){
         alert("올바른 현재 비밀번호를 입력해주세요");
         return false;
     }

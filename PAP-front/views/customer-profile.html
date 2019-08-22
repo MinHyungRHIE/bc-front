@@ -105,7 +105,7 @@
 <!--								<li><a href="dashboard-reviews.html">Reviews</a></li>-->
 								<li><a href="dashboard-bookmarks.html">Bookmarks</a></li>
 								<!-- <li><a href="dashboard-add-listing.html">Add Listing</a></li> -->
-								<li><a href="Provider-profile.html">내 프로필</a></li>
+								<li><a href="provider-profile.html">내 프로필</a></li>
 								<li><a href="dashboard-invoice.html">Invoice</a></li>
 							</ul>
 						</li>
@@ -219,7 +219,7 @@
 			</ul>
 
 			<ul data-submenu-title="Account">
-				<li class="active"><a href="Provider-profile.html"><i class="sl sl-icon-user"></i> 내 프로필</a></li>
+				<li class="active"><a href="provider-profile.html"><i class="sl sl-icon-user"></i> 내 프로필</a></li>
 				<li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
 			</ul>
 
@@ -367,13 +367,14 @@
 <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../js/tooltips.min.js"></script>
 <script type="text/javascript" src="../js/custom.js"></script>
-<script type="text/javascript" src="../views/User-profile.js"></script>
+<script type="text/javascript" src="../js/customer-profile.js"></script>
 <script type="text/javascript" src="../js/apis.js"></script>
 <!-- =============================================================================== -->
 
 <!--<script src="/js/apis.js"></script>-->
 <script type="text/javascript" charset="UTF-8">
 
+	var callpassword;
 	// =============== Loading & Parsing JSON ==================
 	var mock = true;
 	$(document).ready(function () {
@@ -470,7 +471,9 @@
 
 	// // 3) 비밀번호 값 불러오기
 	function callPW(column) {
-		var callpassword = column;
+		callpassword = column;
+
+
 		return callpassword;
 	}
 	// ==================== Tag & Data Mapping / END =======================
