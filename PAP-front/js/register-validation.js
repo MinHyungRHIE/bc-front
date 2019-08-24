@@ -1,4 +1,3 @@
-var mock;
 var inputReturnValue;
 var idReturnValue;
 var nickReturnValue;
@@ -161,7 +160,8 @@ function registerInputValidity() {
         inputReturnValue = true;
     }
 
-    if(idReturnValue === true && nickReturnValue === true && emailReturnValue === true && pw1ReturnValue === true && pw2ReturnValue === true && inputReturnValue === true){
+    if(idReturnValue === true && nickReturnValue === true && emailReturnValue === true &&
+        pw1ReturnValue === true && pw2ReturnValue === true && inputReturnValue === true){
         customerRegister();
     } else {
         alert("양식에 맞춰 작성해주세요.");

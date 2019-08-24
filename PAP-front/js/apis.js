@@ -4,8 +4,9 @@
 }());
 
 function baseUrl(path) {
-  const BASE_URL = 'http://localhost:5000';
-  return `${BASE_URL}${path}`;
+  // const BASE_URL = 'http://localhost:5000';
+  // return `${BASE_URL}${path}`; 테스트 끝나면 이걸로 돌려놓기
+  return `${path}`;
 }
 
 function deleteRequest(path) {
@@ -62,7 +63,7 @@ function postRequest(path, body = {}) {
   } else {
     contentType = 'application/json; charset=UTF-8';
     data = JSON.stringify(body);
-    console.log(data, "데이터 전송 성공!!!!!"  );
+    console.log(data, "데이터 전송 성공!!!!!");
   }
   // Default options are marked with *
   return fetch(baseUrl(path), {
@@ -106,6 +107,10 @@ function putRequest(path, body = {}) {
   }).then(response => response.json());
 }
 
+function loginRequest(credential) {
+  return postRequest('../login.json', credential);
+}
+
 function createTodo(todo) {
   return postRequest("http://localhost:5000/todos", todo);
 }
@@ -127,7 +132,11 @@ function toggleTodo(id) {
 }
 
 function createMember(member) {
-  return postRequest('/todos', member);
+  return postRequest('/signup', member);
+}
+
+function getMemberInfo(path){
+  return loginRequest(path);
 }
 
 const Apis = {
@@ -136,8 +145,10 @@ const Apis = {
   patchRequest,
   postRequest,
   putRequest,
+  loginRequest,
 
   createMember,
+  getMemberInfo,
   createTodo,
   deleteTodo,
   listTodo,
