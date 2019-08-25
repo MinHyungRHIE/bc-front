@@ -7,9 +7,9 @@ var pw2ReturnValue;
 
 function registerValidation(val, id){
     if(id === "username"){
-        idReturnValue = idValidity(val, "id-notify");
+        idReturnValue = idValidity(val, "id-notify", "#id-notify", "아이디");
     } else if(id === "nickname"){
-        nickReturnValue = idValidity(val, "nick-notify");
+        nickReturnValue = idValidity(val, "nick-notify", "#nick-notify", );
     } else if(id === "email"){
         emailReturnValue = emailValidity(val);
     } else if(id === "password1"){
@@ -21,7 +21,7 @@ function registerValidation(val, id){
 
 
 
-function idValidity(val, tag) {
+function idValidity(val, tag, overlapTag) {
     //아이디 유효성 검사 (영문소문자, 숫자만 허용)
     for (var i = 0; i < val.length; i++) {
         var ch = val.charAt(i);
@@ -43,6 +43,37 @@ function idValidity(val, tag) {
         document.getElementById(tag).innerHTML = "";
         return true;
     }
+
+    if(idReturnValue === true){
+        $(function(){
+            $("#"+tag).blur(function(){
+                $.ajax({
+                    type:"POST",
+                    url:"checkSignup",
+                    data:{
+                        "member_ID":$("#"+tag).val()
+                    },
+                    success:function(data){	//data : checkSignup에서 넘겨준 결과값
+                        if($.trim(data)=="YES"){
+                            if($(overlapTag).val()!=''){
+                                document.getElementById(tag).innerHTML = "사용가능 한 아이디입니다..";
+                                document.getElementById(tag).style.color = "red";
+                            }
+                        }else{
+                            if($(overlapTag).val()!=''){
+                                document.getElementById(tag).innerHTML = "중복되는 아이디 입니다.";
+                                document.getElementById(tag).style.color = "red";
+                                $(overlapTag).val('');
+                                $(overlapTag).focus();
+                                return false;
+                            }
+                        }
+                    }
+                })
+            })
+        });
+    }
+    ////////////////////// 여기에 중복검사 추가 ////////////////////////////////
 } // idvalidate
 
 function pwValidity(val) {

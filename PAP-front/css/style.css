@@ -231,9 +231,9 @@ img { max-width: 100%; }
 /* ---------------------------------- */
 /* Header
 ------------------------------------- */
-#logo { display: inline-block; margin-top: 2px; }
+#logo { display: inline-block; margin-top: 3px; }
 
-#logo img { max-height: 50px; width: auto; transform: translate3d(0,0,0); }
+#logo img { max-height: 38px; width: auto; transform: translate3d(0,0,0); }
 img.footer-logo { max-height: 38px; width: auto; }
 
 #header {
@@ -1022,7 +1022,7 @@ body #navigation.style-1 ul ul li:hover ul li a:hover { color: #66676b; }
 
 /* User Menu Avatar Border */
 .user-name span img {
-	border: 1px solid #fff;
+	border: 3px solid #fff;
 	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
 	box-sizing: content-box;
 }
@@ -6123,6 +6123,7 @@ input#date-picker:hover {
 
 #booking-date-range i {
 	color: #999;
+	background-color:
 }
 
 /* Booking Requests Filter / End */
@@ -10409,13 +10410,6 @@ body .notification strong { border: none; }
 	url('../fonts/fontello.woff') format('woff'),
 	url('../fonts/fontello.ttf') format('truetype'),
 	url('../fonts/fontello.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'BMJUA';
-	src: url('../fonts/hangeul.ttf') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -15645,10 +15639,8 @@ body p { font-size: 16px; line-height: 29px; }
 body, h1, h2, h3, h4, h5, h6,  input[type="text"], input[type="password"], input[type="email"],
 textarea, select, input[type="button"], input[type="submit"], button, #tiptip_content, .map-box p, .map-box div,
 .numerical-rating .rating-counter, body .menu-responsive i.menu-trigger:after
-{     font-family: 'BMJUA';
-	src: url('../fonts/hangeul.ttf');
-	font-weight: normal;
-	font-style: normal; }
+{ font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; text-transform: none; }
+
 
 /* Headlines */
 h1, h2, h3, h4, h5, h6 {

@@ -1,27 +1,30 @@
 const myForm = document.querySelector("#myForm");
 var logInInputCheck;
 
-myForm.addEventListener('submit', function(e) {
-    logInInputCheck = loginInputValidity();
-    console.log(logInInputCheck);
-    if(logInInputCheck === true && loginIdReturnValue === true){
-        e.preventDefault();
-        console.log(myForm);
-        const formData = new FormData(myForm);
-        loginRequest(formData)
-            .then(response => {
-                // 로그인 성공 여부 확인
-                console.log('response', response);
-            });
-    } else{
-        alert("양식에 맞춰 작성해주세요.");
-    }
-});
+// 로그인 fetch 사용
+// myForm.addEventListener('submit', function(e) {
+//     logInInputCheck = loginInputValidity();
+//     console.log(logInInputCheck);
+//     if(logInInputCheck === true && loginIdReturnValue === true){
+//         e.preventDefault();
+//         console.log(myForm);
+//         const formData = new FormData(myForm);
+//         console.log(typeof formData, "/////////" + FormData);
+//         loginRequest(formData)
+//             .then(response => {
+//                 // 로그인 성공 여부 확인
+//                 console.log('response', response);
+//             });
+//     } else{
+//         alert("양식에 맞춰 작성해주세요.");
+//     }
+// });
 
 
-
-function initLogin(){
-    var mock = false;
+// 로그인 XMLHttpRequest 사용
+myForm.addEventListener('submit', function(e){
+    var mock = true;
+    e.preventDefault();
     $(function(){
         if(mock){
             startXhr();
@@ -31,7 +34,7 @@ function initLogin(){
             promiseTest(jsonObject);
         }
     });
-}
+})
 
 function promiseTest(value){
     var id = document.getElementById("username").value;
@@ -45,7 +48,7 @@ function promiseTest(value){
     if(id === jsonId && pwd === jsonPw){
         console.log("로그인 성공");
     }else{
-        console.log("로그인 실패");
+        alert("아이디 또는 비밀번호를 확인해주세요.");
     }
 }
 
@@ -54,7 +57,7 @@ var xhr;
 
 function startXhr() {
     xhr = new XMLHttpRequest();
-    xhr.open("POST", "/login.json");
+    xhr.open("POST", "../login.json");
     xhr.send();
 
     xhr.onreadystatechange = function () {
