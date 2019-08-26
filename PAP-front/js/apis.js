@@ -5,8 +5,8 @@
 function baseUrl(path) {
   const BASE_URL = 'http://localhost:9999';
   return `${BASE_URL}${path}`;
-}
 
+}
 function deleteRequest(path) {
   return fetch(baseUrl(path), {
     method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
@@ -125,6 +125,31 @@ function toggleTodo(id) {
 }
 
 
+//SideBar Button Mapping Function//NotYet
+function buttonMyListing(){
+  return getRequest(`/mylisting`)
+}
+
+function buttonAddListing(){
+  return getRequest(`/myAdding`)
+}
+
+function buttonMyPage(){
+  return getRequest(`/mypage/provider`)
+}
+
+function providerProfile(content){
+  return getRequest(content);
+}
+
+function updateProviderProfile(content) {
+  return postRequest(`/mypage/provider`, content);
+}
+
+function updateCustomerProfile(content){
+  return postRequest(`/mypage/customer`, content);
+}
+
 const Apis = {
   deleteRequest,
   getRequest,
@@ -137,4 +162,10 @@ const Apis = {
   listTodo,
   updateTodo,
   toggleTodo,
+  buttonMyListing,
+  buttonAddListing,
+  buttonMyPage,
+  providerProfile,
+  updateProviderProfile,
+  updateCustomerProfile
 };

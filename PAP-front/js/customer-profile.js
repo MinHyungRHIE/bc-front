@@ -24,13 +24,19 @@ function button_myprofile(){
         var dataJson = JSON.stringify(datatmp);
 
 
+
+
         //apis에 생성한 addprofile함수에 인자로 dataObj를 넣는다.
         //addprofile함수는 return 값이 postRequest().
         //postRequest()는 값을 json문자열로 바꾸고 리턴값 fetch던데..
         //Apis.postRequest('/myprofile' , dataArr);
 
         alert("프로필 수정 완료! ");
+
+        showServiceItem(Apis.updateCustomerProfile(dataJson));
+
         return dataJson;
+
 
 
     }else

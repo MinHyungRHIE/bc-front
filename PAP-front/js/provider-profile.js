@@ -24,12 +24,15 @@ function button_myprofile(){
         var dataJson = JSON.stringify(datatmp);
 
 
+
         //apis에 생성한 addprofile함수에 인자로 dataObj를 넣는다.
         //addprofile함수는 return 값이 postRequest().
         //postRequest()는 값을 json문자열로 바꾸고 리턴값 fetch던데..
         //Apis.postRequest('/myprofile' , dataArr);
 
         alert("프로필 수정 완료! ");
+
+        showServiceItem(Apis.updateProviderProfile(dataJson));
         return dataJson;
 
 
@@ -49,17 +52,17 @@ function checkAll() {
         return false;
     }
 
-    if (checkCareer(document.getElementById('career').value) === false) {
-        return false;
-    }
+    // if (checkCareer(document.getElementById('career').value) === false) {
+    //     return false;
+    // }
 
-    if (checkCerti(document.getElementById('certi').value) === false) {
-        return false;
-    }
+    // if (checkCerti(document.getElementById('certi').value) === false) {
+    //     return false;
+    // }
 
-    if (checkIntro(document.getElementById('introduce').value) === false) {
-        return false;
-    }
+    // if (checkIntro(document.getElementById('introduce').value) === false) {
+    //     return false;
+    // }
     return true;
 }
 
@@ -249,7 +252,7 @@ function button_password() {
 
         alert("비밀번호 수정 완료! ");
 
-        console.log(dataJson);
+        //console.log(dataJson);
 
         return dataJson;
 
@@ -265,10 +268,10 @@ function button_password() {
 
 //2) 새 비밀번호,새 비밀번호 확인 입력 함수_ 1.입력여부,2.유효성검사,3.새 비밀번호,새 비밀번호 일치확인
 //1.입력여부+3.변경비밀번호 일치 확인
-function checkPassword(prepassword) {
-    var prepassword = document.getElementById("member_Password").value;
+function checkPassword(prepw) {
+    var prepw = document.getElementById("member_Password").value;
 
-    if (prepassword == "") {
+    if (prepw == "") {
         alert("비밀번호를 입력하세요");
         return false;
     }
@@ -280,8 +283,13 @@ function checkPassword(prepassword) {
 };
 
 function checkNewPassword(newpw){
+    var prepw = document.getElementById("member_Password").value;
     var newpw = document.getElementById("newpassword").value;
 
+    if(prepw == newpw){
+        alert("변경할 비밀번호는 기본 비밀번호와 같지 않아야 합니다.");
+        return false;
+    }
     if (newpw == "") {
         alert("새 비밀번호를 입력하세요");
         return false;
@@ -296,6 +304,7 @@ function checkConfirmPassword(confirmpw){
         alert("새 비밀번호를 확인하세요");
         return false;
     }
+
     if(newpw != confirmpw) {
         alert("변경할 비밀번호가 일치하지 않습니다");
         return false;
