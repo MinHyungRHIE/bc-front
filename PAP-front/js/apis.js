@@ -107,6 +107,17 @@ function putRequest(path, body = {}) {
   }).then(response => response.json());
 }
 
+function getValidationRequest(path) {
+  return fetch(baseUrl(path), {
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    // mode: 'cors', // no-cors, cors, *same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    // credentials: 'same-origin', // include, *same-origin, omit
+    // redirect: 'follow', // manual, *follow, error
+    // referrer: 'no-referrer' // no-referrer, *client
+  }).then(response => response.json());
+}
+
 function loginRequest(credential) {
   return postRequest('../login.json', credential);
 }
@@ -135,8 +146,16 @@ function createMember(member) {
   return postRequest('/signup', member);
 }
 
-function getMemberInfo(path){
-  return loginRequest(path);
+function ValidateId(content) {
+  return getValidationRequest('/signup/check-id/'+ content)
+}
+
+function ValidateNickName(content) {
+  return getValidationRequest('/signup/check-nickname/' + content);
+}
+
+function ValidateEmail(content) {
+  return getValidationRequest('/signup/check-email/' + content);
 }
 
 const Apis = {
@@ -146,9 +165,12 @@ const Apis = {
   postRequest,
   putRequest,
   loginRequest,
+  getValidationRequest,
 
+  ValidateId,
+  ValidateNickName,
+  ValidateEmail,
   createMember,
-  getMemberInfo,
   createTodo,
   deleteTodo,
   listTodo,

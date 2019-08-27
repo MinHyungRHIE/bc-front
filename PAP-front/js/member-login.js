@@ -2,45 +2,41 @@ const myForm = document.querySelector("#myForm");
 var logInInputCheck;
 
 // 로그인 fetch 사용
-// myForm.addEventListener('submit', function(e) {
-//     logInInputCheck = loginInputValidity();
-//     console.log(logInInputCheck);
-//     if(logInInputCheck === true && loginIdReturnValue === true){
-//         e.preventDefault();
-//         console.log(myForm);
-//         const formData = new FormData(myForm);
-//         console.log(typeof formData, "/////////" + FormData);
-//         loginRequest(formData)
-//             .then(response => {
-//                 // 로그인 성공 여부 확인
-//                 console.log('response', response);
-//             });
-//     } else{
-//         alert("양식에 맞춰 작성해주세요.");
-//     }
-// });
+myForm.addEventListener('submit', function(e) {
+    logInInputCheck = loginInputValidity();
+    console.log(logInInputCheck);
+    if(logInInputCheck === true && loginIdReturnValue === true){
+        e.preventDefault();
+        // var loginObject = new Object();
+        // loginObject.memberId = document.getElementById("username").value;
+        // loginObject.memberPassword = document.getElementById("password").value;
+        const formData = new FormData(myForm);
+        console.log("타입확인" + typeof formData)
+        loginRequest(formData).then(response => console.log(response));
+    }
+});
 
 
-// 로그인 XMLHttpRequest 사용
-myForm.addEventListener('submit', function(e){
-    var mock = true;
-    e.preventDefault();
-    $(function(){
-        if(mock){
-            startXhr();
-        } else {
-            var jsonObject = Apis.loginRequest('../login.json');
-            console.log(typeof jsonObject, jsonObject);
-            promiseTest(jsonObject);
-        }
-    });
-})
+// // 로그인 XMLHttpRequest 사용
+// myForm.addEventListener('submit', function(e){
+//     var mock = true;
+//     e.preventDefault();
+//     $(function(){
+//         if(mock){
+//             startXhr();
+//         } else {
+//             var jsonObject = Apis.loginRequest('../login.json');
+//             console.log(typeof jsonObject, jsonObject);
+//             promiseTest(jsonObject);
+//         }
+//     });
+// })
 
 function promiseTest(value){
     var id = document.getElementById("username").value;
     var pwd = document.getElementById("password").value;
-    var jsonId = value["member_ID"];
-    var jsonPw = value["member_Password"];
+    var jsonId = value["memberId"];
+    var jsonPw = value["memberPassword"];
     console.log(jsonId);
     console.log(jsonPw);
     console.log(id, "+", pwd);
@@ -57,7 +53,7 @@ var xhr;
 
 function startXhr() {
     xhr = new XMLHttpRequest();
-    xhr.open("POST", "../login.json");
+    xhr.open("POST", "/login");
     xhr.send();
 
     xhr.onreadystatechange = function () {
