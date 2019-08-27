@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/BucketClass-ver.onlyfront.iml" filepath="$PROJECT_DIR$/.idea/BucketClass-ver.onlyfront.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bucketclass.iml" filepath="$PROJECT_DIR$/bucketclass.iml" />
     </modules>
   </component>
 </project>
