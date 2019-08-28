@@ -21,6 +21,7 @@ function deleteRequest(path) {
 }
 
 function getRequest(path) {
+  console.log(path);
   return fetch(baseUrl(path), {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
     // mode: 'cors', // no-cors, cors, *same-origin
@@ -107,19 +108,8 @@ function putRequest(path, body = {}) {
   }).then(response => response.json());
 }
 
-function getValidationRequest(path) {
-  return fetch(baseUrl(path), {
-    method: 'GET', // *GET, POST, PUT, DELETE, etc.
-    // mode: 'cors', // no-cors, cors, *same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    // credentials: 'same-origin', // include, *same-origin, omit
-    // redirect: 'follow', // manual, *follow, error
-    // referrer: 'no-referrer' // no-referrer, *client
-  }).then(response => response.json());
-}
-
 function loginRequest(credential) {
-  return postRequest('../login.json', credential);
+  return getRequest('/signup');
 }
 
 function createTodo(todo) {
@@ -146,17 +136,22 @@ function createMember(member) {
   return postRequest('/signup', member);
 }
 
-function ValidateId(content) {
-  return getValidationRequest('/signup/check-id/'+ content)
+function providerProfile(content){
+  return getRequest(content);
 }
 
-function ValidateNickName(content) {
-  return getValidationRequest('/signup/check-nickname/' + content);
+function updateProviderProfile(content) {
+  return postRequest('/provider/mypage', content);
 }
 
-function ValidateEmail(content) {
-  return getValidationRequest('/signup/check-email/' + content);
+function updateCustomerProfile(content){
+  return postRequest('/customer/mypage', content);
 }
+
+function emailDuplicateCheck(content){
+  return postRequest('/signup/check-email', content);
+}
+
 
 const Apis = {
   deleteRequest,
@@ -165,15 +160,15 @@ const Apis = {
   postRequest,
   putRequest,
   loginRequest,
-  getValidationRequest,
 
-  ValidateId,
-  ValidateNickName,
-  ValidateEmail,
   createMember,
   createTodo,
   deleteTodo,
   listTodo,
   updateTodo,
-  toggleTodo
+  toggleTodo,
+  emailDuplicateCheck,
+  providerProfile,
+  updateProviderProfile,
+  updateCustomerProfile
 };
