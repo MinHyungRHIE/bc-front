@@ -2,13 +2,9 @@ package com.pap.bucketclass.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-
 import com.pap.bucketclass.entity.Member;
-import com.pap.bucketclass.entity.Role;
 
-@Entity
-public class SignUpModel implements Serializable{
+public class SignUpModel implements Serializable {
 	
 	private String memberId;
 	private String memberPassword;
@@ -32,7 +28,7 @@ public class SignUpModel implements Serializable{
 	public void setMemberPassword(String memberPassword) {
 		this.memberPassword = memberPassword;
 	}
-
+	
 	public String getConfirmPassword() {
 		return confirmPassword;
 	}
@@ -68,18 +64,21 @@ public class SignUpModel implements Serializable{
 	public Member toMember() {
 		Member member = new Member();
 		member.setMemberId(memberId);
-		member.setMemberNickname(memberNickname);
 		member.setMemberEmail(memberEmail);
+		member.setMemberNickname(memberNickname);
 		member.setMemberPassword(memberPassword);
+		
 		return member;
 	}
 	
 	@Override
 	public String toString() {
-		return " memberId : " + memberId + "\n memberNickname : " 
-				+ memberNickname + "\n memberEmail : " + memberEmail
+		return " memberId : " + memberId 
+				+"\n memberNickname : " + memberNickname 
+				+"\n memberEmail : " + memberEmail
 				+"\n memberPassword : " + memberPassword 
-				+ "\n confirmPassword : " + confirmPassword + "\n roleName : " + roleName;
+				+"\n confirmPassword : " + confirmPassword 
+				+"\n roleName : " + roleName;
 	}
 
 }

@@ -1,32 +1,41 @@
 function customerRegister(){
+    var memberInfoObject = new Object();
+    memberInfoObject.memberId = document.getElementById("username").value;
+    memberInfoObject.memberPassword = document.getElementById("password1").value;
+    memberInfoObject.confirmPassword = document.getElementById("password2").value;
+    memberInfoObject.memberEmail = document.getElementById("email").value;
+    memberInfoObject.memberNickname = document.getElementById("nickname").value;
+    memberInfoObject.roleName = "ROLE_CUSTOMER";
+    console.log(typeof memberInfoObject, memberInfoObject);
 
-    var customerInfoObject = new Object();
-    customerInfoObject.memberId = document.getElementById("username").value;
-    customerInfoObject.memberPassword = document.getElementById("password1").value;
-    customerInfoObject.confirmPassword = document.getElementById("password2").value;
-    customerInfoObject.memberEmail = document.getElementById("email").value;
-    customerInfoObject.memberNickname = document.getElementById("nickname").value;
-    customerInfoObject.roleName = "ROLE_CUSTOMER";
-
-    console.log(typeof customerInfoObject, customerInfoObject);
-
-    let signUpResult = Apis.createMember(customerInfoObject).then(response => {
-    	console.log(response);
-    if(response.response === "success"){
-        console.log("회원가입 성공");
-        Apis.getRequest('/test').then( response =>{
-        	console.log(response);
-        });
-    } else {
-    	console.log("여긴와?")
-        console.log("회원가입 실패");
-    }});
-
-    
-    
-
+    Apis.createMember(memberInfoObject).then(response => {
+        if(response.res === "success"){
+            console.log("이용자로 회원가입 성공");
+            location.href="/index";
+        } else {
+            console.log("회원가입 실패");
+        }});
 }
-//
+
+function providerRegister(){
+    var memberInfoObject = new Object();
+    memberInfoObject.memberId = document.getElementById("username").value;
+    memberInfoObject.memberPassword = document.getElementById("password1").value;
+    memberInfoObject.confirmPassword = document.getElementById("password2").value;
+    memberInfoObject.memberEmail = document.getElementById("email").value;
+    memberInfoObject.memberNickname = document.getElementById("nickname").value;
+    memberInfoObject.roleName = "ROLE_PROVIDER";
+    console.log(typeof memberInfoObject, memberInfoObject);
+
+    Apis.createMember(memberInfoObject).then(response => {
+        if(response.res === "success"){
+            console.log("제공자로 회원가입 성공");
+            location.href="/index";
+        } else {
+            console.log("회원가입 실패");
+        }});
+}
+
 //var xhr;
 //
 //function makeXhr(val){
