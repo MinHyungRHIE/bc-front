@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
 <head>
     <!-- Basic Page Needs -->
     <title>BucketClass</title>
@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/main-color.css" id="colors">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/main-color.css" id="colors">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
 
                     <!-- Logo -->
                     <div id="logo">
-                        <a href="main.html"><img src="img/logo.png" alt=""></a>
+                        <a href="main.html"><img src="../img/logo.png" alt=""></a>
                     </div>
                     <div class="clearfix"></div>
                     <!-- Main Navigation / End -->
@@ -70,7 +70,7 @@
 
                     <!-- class="category-box-content" -->
                     <div class="tab-content" id="tab1" style="display: none;">
-                        <form method="post" class="login" id="myForm" name="myForm" action="login">
+                        <form method="post" class="login" onsubmit="return false;" id="myForm" name="myForm">
                             <p class="form-row form-row-wide">
                                 <label for="username">아이디:
                                     <i class="im im-icon-Male"></i>
@@ -84,7 +84,7 @@
                                     <i class="im im-icon-Lock-2"></i>
                                     <input type="password" class="input-text" name="password" id="password" onkeyup="loginValidation(this.value, this.id)"/>
                                 </label>
-                                <label id="pw-notify" class="notify"></label>
+                                <label id="pw-notify"></label>
                                 <span class="lost_password" class="notify">
 										<a href="#">비밀번호를 잊으셨나요?</a>
 									</span>
@@ -110,7 +110,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-6">
-                    <img class="footer-logo" src="img/logo.png" alt="">
+                    <img class="footer-logo" src="../img/logo.png" alt="">
                     <br><br>
                     <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut
                         lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
@@ -170,21 +170,21 @@
 <!-- Wrapper / End -->
 
 <!-- Scripts -->
-<script type="text/javascript" src="js/login-validation.js"></script>
-<script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="js/mmenu.min.js"></script>
-<script type="text/javascript" src="js/chosen.min.js"></script>
-<script type="text/javascript" src="js/slick.min.js"></script>
-<script type="text/javascript" src="js/rangeslider.min.js"></script>
-<script type="text/javascript" src="js/magnific-popup.min.js"></script>
-<script type="text/javascript" src="js/waypoints.min.js"></script>
-<script type="text/javascript" src="js/counterup.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/tooltips.min.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<script type="text/javascript" src="js/member-login.js"></script>
-<script type="text/javascript" src="js/apis.js"></script>
+<script type="text/javascript" src="../js/login-validation.js"></script>
+<script type="text/javascript" src="../js/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="../js/mmenu.min.js"></script>
+<script type="text/javascript" src="../js/chosen.min.js"></script>
+<script type="text/javascript" src="../js/slick.min.js"></script>
+<script type="text/javascript" src="../js/rangeslider.min.js"></script>
+<script type="text/javascript" src="../js/magnific-popup.min.js"></script>
+<script type="text/javascript" src="../js/waypoints.min.js"></script>
+<script type="text/javascript" src="../js/counterup.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/tooltips.min.js"></script>
+<script type="text/javascript" src="../js/custom.js"></script>
+<script type="text/javascript" src="../js/member-login.js"></script>
+<script type="text/javascript" src="../js/apis.js"></script>
 <!-- Style Switcher -->
-<script src="js/switcher.js"></script>
+<script src="../js/switcher.js"></script>
 </body>
 </html>

@@ -9,8 +9,5 @@
         <module name="bucketclass" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="bucketclass" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

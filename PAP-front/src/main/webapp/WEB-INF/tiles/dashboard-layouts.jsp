@@ -2,18 +2,18 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles"  prefix="tiles"%>
 <!DOCTYPE html>
 <html>
-	<head>
-  	</head>
-  	<body>
-  		<div class="wrapper">
-  			<tiles:insertAttribute name="header"/>
-	  			<div class="content">
-			  		<tiles:insertAttribute name="content"/>
-			  	</div>	
-			  	<tiles:insertAttribute name="footer"/>
-		  	</div>
-  	</body>
-  	
+<head>
+</head>
+<body>
+<div class="wrapper">
+    <tiles:insertAttribute name="header"/>
+    <div id="dashboard1">
+        <tiles:insertAttribute name="sidebar"/>
+        <tiles:insertAttribute name="content"/>
+    </div>
+</div>
+</body>
+
 <!--   Core JS Files and PerfectScrollbar library inside jquery.ui   -->
 
 <script src="js/bootstrap/jquery-ui.min.js" type="text/javascript"></script>

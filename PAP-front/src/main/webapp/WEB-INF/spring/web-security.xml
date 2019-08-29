@@ -18,7 +18,7 @@
         <intercept-url pattern="/fonts/**" access="isAnonymous()" />
         <intercept-url pattern="/login**" access="isAnonymous()" />
         <intercept-url pattern="/signup**" access="isAnonymous()" />
-        <intercept-url pattern="/**" access="isAuthenticated()" />                  
+        <intercept-url pattern="/**" access="isAnonymous()" />
 
         <form-login login-page="/login" />
         <http-basic />
@@ -28,7 +28,7 @@
                 
     </http>
 
-	<beans:bean id="userDetailsService" 
+	<beans:bean id="userDetailsService"
                 class="com.pap.bucketclass.service.LocalUserDetailsService" />
 
 <!-- 	<beans:bean id="passwordEncoder" 

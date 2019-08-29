@@ -3,7 +3,7 @@
 
     <!-- Basic Page Needs
     ================================================== -->
-    <title>Listeo</title>
+    <title>BucketList</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/main-color.css" id="colors">
     <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+    <link rel="stylesheet" href="../css/costom.song.css">
+
 
     <!-- Postcodify 셋팅 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -262,7 +264,7 @@
 
                 <!-- Headline -->
                 <div class="add-listing-headline">
-                    <h3><i class="sl sl-icon-book-open"></i> 서비스 정지</h3>
+                    <h3><i class="sl sl-icon-book-open"></i> 수업 정지</h3>
                     <!-- Switcher -->
                     <label class="switch"><input type="checkbox" id="isActive" checked><span class="slider round"></span></label>
                 </div>
@@ -278,14 +280,14 @@
                     <div class="row">
                         <div class="col-md-12">
 
-                            <h2>서비스 수정</h2>
+                            <h2>수업 수정</h2>
 
                             <!-- Breadcrumbs -->
                             <nav id="breadcrumbs">
                                 <ul>
                                     <li><a href="#">홈</a></li>
                                     <li><a href="#">설정</a></li>
-                                    <li>서비스 만들기</li>
+                                    <li>수업 수정</li>
                                 </ul>
                             </nav>
                         </div>
@@ -310,10 +312,10 @@
                                 <!-- Title -->
                                 <div class="row with-forms">
                                     <div class="col-md-12">
-                                        <h5> 별칭 <i class="tip" data-tip-content="호스트에게만 표시됩니다."></i></h5>
-                                        <input class="search-field" type="text" value=""/>
-                                        <h5> 이벤트명 <i class="tip" data-tip-content="제공하실 이벤트명을 입력하세요."></i></h5>
-                                        <input class="search-field" type="text" value=""/>
+<!--                                        <h5> 별칭 <i class="tip" data-tip-content="호스트에게만 표시됩니다."></i></h5>-->
+<!--                                        <input class="search-field" type="text" value=""/>-->
+                                        <h5> 수업명 <i class="tip" data-tip-content="제공하실 수업명을 입력하세요."></i></h5>
+                                        <input class="search-field" id="search-field" type="text" value=""/>
                                     </div>
                                 </div>
 
@@ -413,13 +415,13 @@
 
                                 <!-- Headline -->
                                 <div class="add-listing-headline">
-                                    <h3><i class="sl sl-icon-docs"></i> 이벤트 설명<i class="tip" data-tip-content="게스트가 참여하게 될 이벤트 활동을 구체적으로 설명하세요."></i></h3>
+                                    <h3><i class="sl sl-icon-docs"></i> 수업 설명<i class="tip" data-tip-content="게스트가 참여하게 될 이벤트 활동을 구체적으로 설명하세요."></i></h3>
 
                                 </div>
 
                                 <!-- Description -->
                                 <div class="form">
-                                    <h5>이벤트 소개<i class="tip" data-tip-content="이벤트를 처음부터 끝까지 실제 진행 순서대로 설명해 주세요."></i></h5>
+                                    <h5>수업 소개<i class="tip" data-tip-content="수업을 처음부터 끝까지 실제 진행 순서대로 설명해 주세요."></i></h5>
                                     <textarea class="WYSIWYG" name="summary" cols="40" rows="3" id="summary" spellcheck="true" placeholder="각 활동에 대한 설명을 실제 진행 순서대로 써주세요."></textarea>
                                 </div>
 
@@ -492,7 +494,45 @@
 
                             </div>
                             <!-- Section / End -->
+                            <!-- Section -->
+                            <!-- Section -->
+                            <div class="add-listing-section margin-top-45">
 
+                                <!-- Headline -->
+                                <div class="add-listing-headline">
+                                    <h3><i class="sl sl-icon-book-open"></i> 가격</h3>
+                                    <!-- Switcher -->
+<!--                                    <label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>-->
+                                </div>
+
+                                <!-- Switcher ON-OFF Content -->
+                                <div class="switcher-content">
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table id="pricing-container">
+                                                <tr class="pricing-list-item pattern">
+                                                    <td>
+                                                        <div class="fm-move">
+                                                            <i class="sl sl-icon-cursor-move"></i>
+                                                        </div>
+                                                        <div class="fm-input pricing-name">
+                                                            <input type="number" id = "service_price" placeholder="금액을 입력하세요" /></div>
+                                                        <div class="fm-input pricing-ingredients">
+                                                            <input type="text" id= "service_price_description" placeholder="가격설명을 입력하세요..   주 0일 총 0회" /></div>
+                                                        <!--									<div class="fm-input pricing-price"><input type="text" placeholder="Price" data-unit="USD" /></div>-->
+<!--                                                        <div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>-->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- Switcher ON-OFF Content / End -->
+
+                            </div>
+                            <!-- Section / End -->
 
 
                             <!-- Section -->
@@ -514,7 +554,7 @@
                                                 <td>
                                                     <div class="fm-move"><i class="sl sl-icon-cursor-move"></i></div>
                                                     <div class="col-md-5">
-                                                        <select class="chosen-select" data-placeholder="은행명">
+                                                        <select class="chosen-select" data-placeholder="은행명" id="chosen-select">
                                                             <option label="은행"></option>
                                                             <option>제주 은행</option>
                                                             <option>신한 은행</option>
@@ -538,7 +578,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        <div class="fm-input pricing-ingredients"><input type="int" placeholder="계좌번호" /></div></div>
+                                                        <div class="fm-input pricing-ingredients"><input type="int" placeholder="계좌번호" id="account_num" /></div></div>
                                                     <div class="fm-close"><a class="delete" href="#"><i class="fa fa-remove"></i></a></div>
 
                                                 </td>
@@ -687,7 +727,7 @@
             </div>
         </div>
         <!-- Content / End -->
-        <a href="dashboard-my-listings.html" class="button preview" onclick="dataEdit();">저장하기<i class="fa fa-arrow-circle-right"></i></a>
+        <a href="dashboard-my-listings.html" class="button save" id="button save" onclick="dataEdit();">저장하기<i class="fa fa-arrow-circle-right"></i></a>
 
     </div>
     <!-- Dashboard / End -->
@@ -715,7 +755,8 @@
 <script type="text/javascript" src="../js/dropzone.js"></script>
 <!-- hashtag js-->
 <script type="text/javascript" src="../js/tags.js"></script>
-
+<!-- my custom js -->
+<script type="text/javascript" src="../js/custom.song.js"></script>
 <script>
 
 
@@ -723,88 +764,95 @@
     const serviceIsActive = $('input:checkbox[id="isActive"]').is(":checked")?false:true;
 
 
-    var btnEle = document.getElementById("button preview");
-    btnEle.addEventListener("click",function () {
-
-        // 우편번호
-        var entry_postcode6 = document.getElementById("entry_postcode6").value;
-        entry_postcode6.toString();
-
-        // 도로명주소
-        var entry_address = document.getElementById("entry_address").value;
-        entry_address.toString();
-
-        // 상세주소
-        var entry_details = document.getElementById("entry_details").value;
-        entry_details.toString();
 
 
-        // 지번주소
-        var entry_jibeon_address = document.getElementById("entry_jibeon_address").value;
-        entry_jibeon_address.toString();
+//     var btnEle = document.getElementById("button preview");
+//     btnEle.addEventListener("click",function () {
+//
+//         // 우편번호
+//         var entry_postcode6 = document.getElementById("entry_postcode6").value;
+//         entry_postcode6.toString();
+//
+//         // 도로명주소
+//         var entry_address = document.getElementById("entry_address").value;
+//         entry_address.toString();
+//
+//         // 상세주소
+//         var entry_details = document.getElementById("entry_details").value;
+//         entry_details.toString();
+//
+//
+//         // 지번주소
+//         var entry_jibeon_address = document.getElementById("entry_jibeon_address").value;
+//         entry_jibeon_address.toString();
+//
+//         // 지번주소를 파싱
+//         var spliceStr = entry_jibeon_address.split(' ');
+//
+//         //                객체생성
+//         var sendJson = new Object();
+//         sendJson.address_state = spliceStr[0];
+//         sendJson.address_city = spliceStr[1];
+//         sendJson.address_dong = spliceStr[2];
+//         sendJson.address_detail = spliceStr[3]+ " " + entry_details;
+//
+//         // JSON은 날짜데이터 가공 후 같이 보내기
+//
+// //=====================      날짜 데이터 가져오기        =============================================================
+//
+//         // 날짜 데이터를 가져오기
+//         var datetimeString = document.getElementsByName("datetimes")[0].value;
+//
+//         console.log(typeof datetimeString, datetimeString);
+//
+//         // 날짜데이터에서 - 기준으로 데이터 나누기
+//         var spliteDate = datetimeString.split("-");
+//
+//
+//         // 날짜데이터에서 '/' 없애기 -> ':'없애기 -> ' '없애기         -> 201908211200오후
+//         var staDate = spliteDate[0].replace(/\//gi,"").replace(/ /gi, "").replace(":","");
+//         var endDate = spliteDate[1].replace(/\//gi,"").replace(/ /gi, "").replace(":","");
+//
+//         // 날짜데이터에 '오후'가 있으면 12시간 추가해주기. 그다음 YYYYMMDDHHMMSS로 형태로 변환
+//         function DateConverter(a) {
+//             if(a.includes('오후')){
+//                 var ifDate = a.replace(/[^0-9]/g,"");
+//                 ifDate = ifDate+"00";
+//                 return Number(ifDate)+120000;
+//
+//             }else{
+//                 var ifDateElse = a.replace(/[^0-9]/g,"");
+//                 ifDateElse = ifDateElse+"00";
+//                 return Number(ifDateElse);
+//             }
+//         };
+//
+//         var staDateFinal = DateConverter(staDate);
+//         var endDateFinal = DateConverter(endDate);
+//
+//         // 주소가 저장된 object에 key value값으로 날짜데이터를 object에 넣기
+//         sendJson.service_register_date = staDateFinal;
+//         sendJson.service_end_date = endDateFinal;
+//
+//         // 가격 가져오기
+//         var priceDate = document.getElementById("service_price");
+//         var priceDescriptionData = document.getElementById("service_price_description");
+//
+//         // 가격을 저장된 object에 key value값으로 넣기
+//         sendJson.service_price = Number(priceDate.value);
+//         sendJson.service_date_description = priceDescriptionData.value;
+//
+//
+//         // object를 JSON형태로 만들기
+//
+//         var jsonAddress = JSON.stringify(sendJson);
+//
+//         alert(jsonAddress);
+//     });
+    var btnEle = document.getElementById("button save");
+    btnEle.addEventListener("click",function (){
+        alert(combineJson());
 
-        // 지번주소를 파싱
-        var spliceStr = entry_jibeon_address.split(' ');
-
-        //                객체생성
-        var sendJson = new Object();
-        sendJson.address_state = spliceStr[0];
-        sendJson.address_city = spliceStr[1];
-        sendJson.address_dong = spliceStr[2];
-        sendJson.address_detail = spliceStr[3]+ " " + entry_details;
-
-        // JSON은 날짜데이터 가공 후 같이 보내기
-
-//=====================      날짜 데이터 가져오기        =============================================================
-
-        // 날짜 데이터를 가져오기
-        var datetimeString = document.getElementsByName("datetimes")[0].value;
-
-        console.log(typeof datetimeString, datetimeString);
-
-        // 날짜데이터에서 - 기준으로 데이터 나누기
-        var spliteDate = datetimeString.split("-");
-
-
-        // 날짜데이터에서 '/' 없애기 -> ':'없애기 -> ' '없애기         -> 201908211200오후
-        var staDate = spliteDate[0].replace(/\//gi,"").replace(/ /gi, "").replace(":","");
-        var endDate = spliteDate[1].replace(/\//gi,"").replace(/ /gi, "").replace(":","");
-
-        // 날짜데이터에 '오후'가 있으면 12시간 추가해주기. 그다음 YYYYMMDDHHMMSS로 형태로 변환
-        function DateConverter(a) {
-            if(a.includes('오후')){
-                var ifDate = a.replace(/[^0-9]/g,"");
-                ifDate = ifDate+"00";
-                return Number(ifDate)+120000;
-
-            }else{
-                var ifDateElse = a.replace(/[^0-9]/g,"");
-                ifDateElse = ifDateElse+"00";
-                return Number(ifDateElse);
-            }
-        };
-
-        var staDateFinal = DateConverter(staDate);
-        var endDateFinal = DateConverter(endDate);
-
-        // 주소가 저장된 object에 key value값으로 날짜데이터를 object에 넣기
-        sendJson.service_register_date = staDateFinal;
-        sendJson.service_end_date = endDateFinal;
-
-        // 가격 가져오기
-        var priceDate = document.getElementById("service_price");
-        var priceDescriptionData = document.getElementById("service_price_description");
-
-        // 가격을 저장된 object에 key value값으로 넣기
-        sendJson.service_price = Number(priceDate.value);
-        sendJson.service_date_description = priceDescriptionData.value;
-
-
-        // object를 JSON형태로 만들기
-
-        var jsonAddress = JSON.stringify(sendJson);
-
-        alert(jsonAddress);
     });
 
 </script>
