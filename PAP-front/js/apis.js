@@ -138,16 +138,13 @@ function buttonMyPage(){
   return getRequest(`/mypage/provider`)
 }
 
-function providerProfile(content){
-  return getRequest(content);
+
+function updateProviderProfile(object) {
+  return postRequest('/provider/mypage', object);
 }
 
-function updateProviderProfile(content) {
-  return postRequest(`/mypage/provider`, content);
-}
-
-function updateCustomerProfile(content){
-  return postRequest(`/mypage/customer`, content);
+function updateCustomerProfile(object){
+  return postRequest('/customer/mypage', object);
 }
 
 const Apis = {
@@ -165,7 +162,7 @@ const Apis = {
   buttonMyListing,
   buttonAddListing,
   buttonMyPage,
-  providerProfile,
+
   updateProviderProfile,
   updateCustomerProfile
 };
