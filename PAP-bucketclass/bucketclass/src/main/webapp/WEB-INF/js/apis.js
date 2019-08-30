@@ -40,6 +40,8 @@ function patchRequest(path, body = {}) {
   } else {
     contentType = 'application/json; charset=UTF-8';
     data = JSON.stringify(body);
+    console.log(data, "데이터 전송 성공!!!!!오예오예");
+    console.log(typeof data);
   }
   // Default options are marked with *
   return fetch(baseUrl(path), {
@@ -100,7 +102,7 @@ function putRequest(path, body = {}) {
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
     // credentials: 'same-origin', // include, *same-origin, omit
     headers: {
-      'Content-Type': contentType
+      'Content-Type': application/json
     },
     // redirect: 'follow', // manual, *follow, error
     // referrer: 'no-referrer', // no-referrer, *client
@@ -136,12 +138,16 @@ function createMember(member) {
   return postRequest('/signup', member);
 }
 
+function providerProfile(content){
+  return getRequest(content);
+}
+
 function updateProviderProfile(object) {
-  return postRequest('/provider/mypage', object);
+  return patchRequest('/provider/mypage/update', object);
 }
 
 function updateCustomerProfile(object){
-  return postRequest('/customer/mypage', object);
+  return patchRequest('/customer/mypage/update', object);
 }
 
 function emailDuplicateCheck(content){
@@ -164,7 +170,7 @@ const Apis = {
   updateTodo,
   toggleTodo,
   emailDuplicateCheck,
-
+  providerProfile,
   updateProviderProfile,
   updateCustomerProfile
 };
