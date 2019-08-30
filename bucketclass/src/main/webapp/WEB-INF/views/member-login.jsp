@@ -28,7 +28,7 @@
 
                     <!-- Logo -->
                     <div id="logo">
-                        <a href="/main"><img src="/img/logo.png" alt=""></a>
+                        <a href="/"><img src="/img/logo.png" alt=""></a>
                     </div>
                     <div class="clearfix"></div>
                     <!-- Main Navigation / End -->
@@ -38,7 +38,6 @@
                 <!-- Right Side Content / End -->
                 <div class="right-side">
                     <div class="header-widget">
-                        <a href="/signin" class="sign-in">로그인</a>
                         <a href="/signup" class="sign-in">회원가입</a>
                     </div>
                 </div>
