@@ -1,19 +1,12 @@
 package com.pap.bucketclass.model;
 
 public class CustomerMyPageModel {
-	private String memberPassword;
+	
 	private String memberEmail;
 	private String memberNickname;
 	private String memberImg;
 	private String introduce;
 	
-	
-	public String getMemberPassword() {
-		return memberPassword;
-	}
-	public void setMemberPassword(String memberPassword) {
-		this.memberPassword = memberPassword;
-	}
 	public String getMemberEmail() {
 		return memberEmail;
 	}
@@ -38,4 +31,5 @@ public class CustomerMyPageModel {
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
 	}
+	
 }
