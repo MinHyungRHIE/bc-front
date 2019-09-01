@@ -1,93 +1,45 @@
 package com.pap.bucketclass.controller;
 
+import java.security.Principal;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.pap.bucketclass.entity.Member;
-import com.pap.bucketclass.model.ResponseModel;
-import com.pap.bucketclass.model.SignUpModel;
+import com.pap.bucketclass.entity.Role;
 import com.pap.bucketclass.service.MemberService;
 
 @Controller
-public class MainController{
-		
+public class MainController {
+	
 	@Autowired
-	MemberService memberService;
+	MemberService memberSerivce;
 	
-	/***********
-	 *메인 테스트*
-	 ***********/
-	@RequestMapping(
-			value="/",
-			method=RequestMethod.GET
-			)
-	
-	public String main() {
+	@GetMapping("/")
+	public String loginToMain(Authentication auth, ModelMap modelMap) {
+		if(auth != null) {
+			Object principal = auth.getPrincipal();
+			Set<Role> userRole = new HashSet<>();
+			if(principal != null && principal instanceof Member){
+				userRole = ((Member)principal).getRoles();
+			}
+			System.out.println(userRole);
+			String roleStr = null; 
+			Iterator<Role> itr = userRole.iterator();
+			while(itr.hasNext()) {
+				roleStr = itr.next().getRoleName();
+			}
+			modelMap.addAttribute("rolename", roleStr);
+			modelMap.addAttribute("nick",((Member)principal).getMemberNickname());
+			return "main";
+		}
 		return "main";
 	}
-
-	/***********
-	 *마이페이지 테스트*
-	 ***********/
-	@RequestMapping(
-			value="/mypage",
-			method=RequestMethod.GET
-	)
-
-	public String myPage() {
-		return "dashboard";
-	}
-
 	
-
-	/***********
-	 *로그인 테스트*
-	 ***********/
-	@RequestMapping(
-			value="/login",
-			method=RequestMethod.GET
-			)
-	public String loginForm() {
-		return "index";
-
-	}
-
-	/*************
-	 *회원가입 테스트*
-	 *************/
-	@RequestMapping(
-			path="/signup",
-			method=RequestMethod.GET
-			)
-	public String signUpForm() {
-
-		return "member-register";
-	}
-
-	@RequestMapping(
-			path="/signup",
-			method=RequestMethod.POST,
-			produces= {
-					MediaType.APPLICATION_JSON_UTF8_VALUE,
-					MediaType.APPLICATION_ATOM_XML_VALUE
-					}
-			)
-	@ResponseBody
-	public ResponseModel create(@RequestBody SignUpModel model) {
-		System.out.println(model.toString());
-		ResponseModel resObj = new ResponseModel();
-		try {
-			Member member = memberService.insertMember(model);
-			resObj.setResponse("success");
-			return resObj;
-		} catch (Exception e) {
-			resObj.setResponse("fail");
-			return resObj;
-		}
-	}
 }
