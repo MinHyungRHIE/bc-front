@@ -68,6 +68,7 @@
 		<div class="clearfix"></div>
 		<!-- Header Container / End -->
 
+
 		<!-- Banner -->
 		<div class="main-search-container"
 			data-background-image="/img/main-study.jpg">
