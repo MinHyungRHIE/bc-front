@@ -63,7 +63,7 @@ public class ProviderMyPageController {
 	// 제공자가 프로필사진 업로드 시 들어오는 경로
 	@PreAuthorize("hasRole('ROLE_PROVIDER')")
 	@PostMapping(
-			value="/provider/mypage/imageUpload", 
+			value="/provider/mypage/update",
 			produces= {
 					MediaType.APPLICATION_JSON_UTF8_VALUE,
 					MediaType.APPLICATION_ATOM_XML_VALUE})

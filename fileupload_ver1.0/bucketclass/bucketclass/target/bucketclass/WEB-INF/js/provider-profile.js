@@ -145,12 +145,12 @@ function updateImg(){
         console.log("2222 "+typeof imgFormData, imgFormData);
 
         // for debugging
-        const obj = Object.fromEntries(imgFormData);
-        console.log('obj', obj);
+        //const obj = Object.fromEntries(imgFormData);
+        //console.log('obj', obj);
         // for debugging
 
         //post postRequest('/provider/mypage/updateImg', object)
-        Apis.updateProfileImg(obj).then(response =>{
+        Apis.updateProfileImg(imgFormData).then(response =>{
             console.log("response>>" + response);
             insertProfileImgResource('memberImg', response);
         })

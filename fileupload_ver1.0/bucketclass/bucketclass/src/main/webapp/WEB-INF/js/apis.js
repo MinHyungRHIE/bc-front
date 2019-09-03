@@ -57,7 +57,8 @@ function patchRequest(path, body = {}) {
 
 function postRequest(path, body = {}) {
 	let contentType, data;
-	if (typeof body === 'FormData') {
+	if (body instanceof FormData) {
+		console.log("폼데이토다")
 		contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
 		data = body;
 	} else {
@@ -140,7 +141,7 @@ function providerProfile(content){
 }
 
 function updateProfileImg(object){
-	return postRequest('/provider/mypage/updateImg', object)
+	return postRequest('/provider/mypage/update', object)
 }
 
 function updateProviderProfile(object) {

@@ -87,9 +87,9 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3370/back?serverTimezone=UTC&amp;useSSL=false" />
-		<property name="username" value="study" />
-		<property name="password" value="study" />
+			value="jdbc:mysql://localhost:3306/back?serverTimezone=UTC&amp;useSSL=false" />
+		<property name="username" value="master" />
+		<property name="password" value="Test1234" />
 	</bean>
 
 	<!-- Create default configuration for Hibernate -->
