@@ -8,10 +8,13 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pap.bucketclass.entity.Member;
 import com.pap.bucketclass.model.CustomerMyPageModel;
@@ -41,7 +44,7 @@ public class CustomerMyPageController {
 		}
 		Member member = (Member) memberDetailsService.loadUserByUsername(principal.getName());
 		model.addAttribute("member", member);
-		return "customer-mypage";
+		return "customer-mypage.page";
 	}
 
 	 //페이지 전환 후, 프로필 정보에 나타낼 멤버 정보 보내기
@@ -51,7 +54,7 @@ public class CustomerMyPageController {
 					MediaType.APPLICATION_JSON_UTF8_VALUE,
 					MediaType.APPLICATION_ATOM_XML_VALUE})
 	@ResponseBody
-	public Member loadMypage(@RequestBody RequestModel model, Principal principal) {
+	public Member loadMypage(@RequestBody RequestModel model, Principal principal ) {
 		Member member = customerService.loadMember(principal.getName());
 		if(member != null) {
 			return member;
@@ -61,13 +64,13 @@ public class CustomerMyPageController {
 	
 	//이용자가 MyPage에서 정보를 수정할 때 들어오는 경로 & 수정된 데이터 보내기
 	@PreAuthorize("hasRole('ROLE_CUSTOMER')")
-	@PatchMapping(
+	@PostMapping(
 			value="/customer/mypage/update",
 			produces= {
 					MediaType.APPLICATION_JSON_UTF8_VALUE,
 					MediaType.APPLICATION_ATOM_XML_VALUE})
 	@ResponseBody
-	public Member updateMypage(@RequestBody CustomerMyPageModel customerModel, Principal principal) {
+	public Member updateMypage(@ModelAttribute CustomerMyPageModel customerModel, Principal principal) {
 		Member member = customerService.updateMember(customerModel, principal.getName());
 		if(member != null) {
 			return member;
@@ -84,7 +87,8 @@ public class CustomerMyPageController {
 					MediaType.APPLICATION_ATOM_XML_VALUE}
 			)
 	@ResponseBody
-	public ResponseModel changePassword(@RequestBody PasswordModel model, Principal principal) {
+	public ResponseModel changePassword(@RequestBody PasswordModel model, 
+			Principal principal) {
 		
 		if(customerService.changePassword(model, principal.getName())) {
 			response.setRes("success");

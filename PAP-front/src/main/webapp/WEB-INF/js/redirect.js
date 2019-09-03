@@ -11,7 +11,7 @@ function viewProviderMyPage() {
 };
 
 function viewMyListing() {
-    location.href = "../views/pending-listing.jsp";
+    location.href = "../views/my-listing.jsp";
 };
 
 function viewMemberLogin() {

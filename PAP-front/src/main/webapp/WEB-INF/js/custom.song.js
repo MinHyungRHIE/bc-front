@@ -14,13 +14,13 @@ function DateConverter(a) {
 		ifDate = ifDate+"00";
 		// 숫자로 전달
 		// return Number(ifDate)+120000;
-		
+
 		// 스트링으로 전달
 		var temIf = Number(ifDate)+120000;
 		//ifDate가 12 00 00 이면 (원래는 오후 12시) 24 00 00가 됨, 말이 안되므로 예외처리, 시간은 23시 59분 59초까지임
 		//오후 12시는 오전 11시 59분의 1분 이후로 한다.
 		//20190902240000 이런식으로 들어옴 
-		
+
 		if(String(temIf).includes("240000", 7)){
 			temIf = Number(temIf) - 120000;
 		}
@@ -29,7 +29,7 @@ function DateConverter(a) {
 		//오전 12시는 00시 이어야 한다.
 		var ifDateElse = a.replace(/[^0-9]/g,"");
 		ifDateElse = ifDateElse+"00";
-		
+
 		if(String(ifDateElse).includes("120000", 7)){
 			ifDateElse = Number(ifDateElse) -120000;
 		}
@@ -64,7 +64,7 @@ function firstServiceSave(){
 	var gigan = document.getElementById("check-c1");
 	var gigan2 = document.getElementById("check-d1");
 	var category_period = ($(gigan).prop("checked"))? "정기" : ($(gigan2).prop("checked"))?"비정기":"";
-	
+
 	// category_period 규모
 	var gyumo = document.getElementById("check-e1");
 	var gyumo2 = document.getElementById("check-f1");
@@ -77,13 +77,13 @@ function firstServiceSave(){
 
 	// 해시태그 hashTag [array로 들어감]
 	var hash = document.getElementsByClassName("tags-wrapper")[0].textContent;
-	var tempHash = hash.split("⨂");
-
-	var hashArray = new Array();
-	for (var i = 0; i<tempHash.length-1;i++){
-		hashArray[i] = tempHash[i]
-		console.log(hashArray[i])
-	}
+	// var tempHash = hash.split("⨂");
+	//
+	// var hashArray = new Array();
+	// for (var i = 0; i<tempHash.length-1;i++){
+	// 	hashArray[i] = tempHash[i]
+	// 	console.log(hashArray[i])
+	// }
 
 	// 이벤트 소개 (서비스 내용) service_description
 	var service_description = document.getElementById("summary").value;
@@ -105,20 +105,22 @@ function firstServiceSave(){
 	sendJson.categoryscale = category_scale;
 	sendJson.categoryperiod = category_period;
 	sendJson.categoryplace = category_place;
-	sendJson.hashTag = hashArray;
+	sendJson.hashTag = hash;
 	sendJson.servicedescription = service_description;
 	sendJson.accountbank = account_bank;
 	sendJson.accountnumber = account_number;
 	// sendJson.service_img_uri;
 
-	Apis.postRequest(`/provider/add-service`, sendJson).then(response => {
-		if(response.res === "success"){
-			alert("나의 수업 템플릿에 저장 되었습니다!");
-			location.href = "/"; //원래 my-listing 페이지로 이동해야함
-		} else {
-			alert("다시 작성해주세요");
-		}
-	});
+	return sendJson;
+
+//	Apis.postRequest(`/provider/add-service`, sendJson).then(response => {
+//		if(response.res === "success"){
+//			alert("나의 수업 템플릿에 저장 되었습니다!");
+//			location.href = "/"; //원래 my-listing 페이지로 이동해야함
+//		} else {
+//			alert("다시 작성해주세요");
+//		}
+//	});
 
 	// alert(jsonAddress);
 //	}
@@ -133,41 +135,28 @@ function secondServiceSave(){
 	// var btnEle = document.getElementById("button preview");
 	// btnEle.addEventListener("click",function () {
 
-	// 우편번호
+	// 우편번호 / 도로명주소 / 상세주소 / 지번주소
 	var entry_postcode6 = document.getElementById("entry_postcode6").value;
-	entry_postcode6.toString();
-
-	// 도로명주소
 	var entry_address = document.getElementById("entry_address").value;
-	entry_address.toString();
-
-	// 상세주소
 	var entry_details = document.getElementById("entry_details").value;
-	entry_details.toString();
-
-
-	// 지번주소
 	var entry_jibeon_address = document.getElementById("entry_jibeon_address").value;
+
+	entry_postcode6.toString();
+	entry_address.toString();
+	entry_details.toString();
 	entry_jibeon_address.toString();
 
 	// 지번주소를 파싱
 	var spliceStr = entry_jibeon_address.split(' ');
 
-//	===================== 날짜 데이터 가져오기
-//	=============================================================
-	// 날짜 데이터를 가져오기
+//	===================== 날짜 데이터 =============================================================
 	var datetimeString = document.getElementsByName("datetimes")[0].value;
-
-	// 날짜데이터에서 - 기준으로 데이터 나누기
 	var spliteDate = datetimeString.split("-");
-
-	// 날짜데이터에서 '/' 없애기 -> ':'없애기 -> ' '없애기 -> 201908211200오후
 	var staDate = spliteDate[0].replace(/\//gi,"").replace(/ /gi, "").replace(":","");
 	var endDate = spliteDate[1].replace(/\//gi,"").replace(/ /gi, "").replace(":","");
+
 	var staDateFinal = DateConverter(staDate);
-	console.log(staDateFinal);
 	var endDateFinal = DateConverter(endDate);
-	console.log(endDateFinal);
 
 	// 가격 가져오기
 	var priceDate = document.getElementById("service_price");
@@ -185,37 +174,25 @@ function secondServiceSave(){
 	sendJson.servicedatedescription = priceDescriptionData.value;
 	console.log(sendJson);
 
-	const url = document.location.href;
-	const urlArray = url.split('/');
-	const serviceId = urlArray[urlArray.length-2];
-	console.log(serviceId);
+	return sendJson;
 
-	postRequest(`/provider/my-template/`+serviceId+`/regist`,  sendJson).then(response => {
-		if(response.res === "success"){
-			alert("나의 수업 리스트에 저장 되었습니다!");
-			location.href = "/"; //원래 my-listing 페이지로 이동해야함
-		} else {
-			alert("다시 작성해주세요");
-		}
-	});
+
 
 //	Apis.postRequest(`/provider/my-template/1/regist`,  sendJson).then(response => {
-//	console.log("들어왔어");
-//	if(response.res === "success"){
-//	alert("나의 수업 리스트에 저장 되었습니다!");
-//	location.href = "/"; //원래 my-listing 페이지로 이동해야함
-//	} else {
-//	alert("다시 작성해주세요");
-//	}
+//		console.log("들어왔어");
+//		if(response.res === "success"){
+//			alert("나의 수업 리스트에 저장 되었습니다!");
+//			location.href = "/"; //원래 my-listing 페이지로 이동해야함
+//		} else {
+//			alert("다시 작성해주세요");
+//		}
 //	});
 	// object를 JSON형태로 만들기
 //	return JSON.stringify(sendJson);
 //	alert(jsonAddress);
 }
-//);
+// );
 //}
-
-
 
 function combineJson(){
 	var a = JSON.parse(firstServiceSave());

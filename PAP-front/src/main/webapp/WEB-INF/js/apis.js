@@ -4,7 +4,7 @@
 }());
 
 function baseUrl(path) {
-	const BASE_URL = 'http://localhost:8080';
+	const BASE_URL = 'http://localhost:9999';
 	return `${BASE_URL}${path}`;
 }
 
@@ -63,8 +63,7 @@ function postRequest(path, body = {}) {
 	} else {
 		contentType = 'application/json; charset=UTF-8';
 		data = JSON.stringify(body);
-		console.log("데이터 전송 성공!!")
-		console.log(data);
+		console.log(data, "데이터 전송 성공!!!!!");
 	}
 	// Default options are marked with *
 	return fetch(baseUrl(path), {
@@ -108,6 +107,31 @@ function putRequest(path, body = {}) {
 	}).then(response => response.json());
 }
 
+function postRequest1(path, body) {
+	// Default options are marked with *
+	return fetch(baseUrl(path), {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		// mode: 'cors', // no-cors, cors, *same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		// credentials: 'same-origin', // include, *same-origin, omit
+//        headers: {
+//            'Content-Type': 'multipart/form-data'
+//        },
+		// redirect: 'follow', // manual, *follow, error
+		// referrer: 'no-referrer', // no-referrer, *client
+		body: body // body data type must match "Content-Type" header
+	}).then(response => response.json());
+}
+
+function updateProviderProfile(object) {
+	return postRequest1('/provider/mypage/update', object);
+}
+
+function updateCustomerProfile(object){
+	return postRequest1('/customer/mypage/update', object);
+}
+
+
 function loginRequest(credential) {
 	return getRequest('/signup');
 }
@@ -140,14 +164,6 @@ function providerProfile(content){
 	return getRequest(content);
 }
 
-function updateProviderProfile(object) {
-	return patchRequest('/provider/mypage/update', object);
-}
-
-function updateCustomerProfile(object){
-	return patchRequest('/customer/mypage/update', object);
-}
-
 function emailDuplicateCheck(content){
 	return postRequest('/signup/check-email', content);
 }
@@ -172,6 +188,7 @@ const Apis = {
 		postRequest,
 		putRequest,
 		loginRequest,
+		postRequest1,
 
 		listService,
 		singleService,
@@ -187,5 +204,5 @@ const Apis = {
 		emailDuplicateCheck,
 		providerProfile,
 		updateProviderProfile,
-		updateCustomerProfile
+		updateCustomerProfile,
 };

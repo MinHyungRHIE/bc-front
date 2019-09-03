@@ -5,7 +5,7 @@
 
     <!-- Basic Page Needs
     ================================================== -->
-    <title>Listeo</title>
+    <title>Bucket Class</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -24,166 +24,7 @@
 
     <!-- Header Container
     ================================================== -->
-    <header id="header-container" class="fixed fullwidth dashboard">
 
-        <!-- Header -->
-        <div id="header" class="not-sticky">
-            <div class="container">
-
-                <!-- Left Side Content -->
-                <div class="left-side">
-
-                    <!-- Logo -->
-                    <div id="logo">
-                        <a href="index.html"><img src="/img/logo.png" alt=""></a>
-                        <a href="index.html" class="dashboard-logo"><img src="/img/logo2.png" alt=""></a>
-                    </div>
-
-                    <!-- Mobile Navigation -->
-                    <div class="mmenu-trigger">
-                        <button class="hamburger hamburger--collapse" type="button">
-						<span class="hamburger-box">
-							<span class="hamburger-inner"></span>
-						</span>
-                        </button>
-                    </div>
-
-                    <!-- Main Navigation -->
-                    <nav id="navigation" class="style-1">
-                        <ul id="responsive">
-
-                            <li><a href="#">Home</a>
-                                <ul>
-                                    <li><a href="index.html">Home 1</a></li>
-                                    <li><a href="index-2-airbnb.html">Home 2 (Airbnb)</a></li>
-                                    <li><a href="index-3.html">Home 3</a></li>
-                                    <li><a href="index-4.html">Home 4</a></li>
-                                    <li><a href="index-5.html">Home 5</a></li>
-                                    <li><a href="index-6.html">Home 6</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a href="#">Listings</a>
-                                <ul>
-                                    <li><a href="#">List Layout</a>
-                                        <ul>
-                                            <li><a href="listings-list-with-sidebar.html">With Sidebar</a></li>
-                                            <li><a href="listings-list-full-width.html">Full Width</a></li>
-                                            <li><a href="listings-list-full-width-with-map.html">Full Width + Map</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Grid Layout</a>
-                                        <ul>
-                                            <li><a href="listings-grid-with-sidebar-1.html">With Sidebar 1</a></li>
-                                            <li><a href="listings-grid-with-sidebar-2.html">With Sidebar 2</a></li>
-                                            <li><a href="listings-grid-full-width.html">Full Width</a></li>
-                                            <li><a href="listings-grid-full-width-with-map.html">Full Width + Map</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Half Screen Map</a>
-                                        <ul>
-                                            <li><a href="listings-half-screen-map-list.html">List Layout</a></li>
-                                            <li><a href="listings-half-screen-map-grid-1.html">Grid Layout 1</a></li>
-                                            <li><a href="listings-half-screen-map-grid-2.html">Grid Layout 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Single Listings</a>
-                                        <ul>
-                                            <li><a href="listings-single-page.html">Single Listing 1</a></li>
-                                            <li><a href="listings-single-page-2.html">Single Listing 2</a></li>
-                                            <li><a href="listings-single-page-3.html">Single Listing 3</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li><a class="current" href="#">User Panel</a>
-                                <ul>
-                                    <li><a href="dashboard.html">Dashboard</a></li>
-                                    <li><a href="dashboard-messages.html">Messages</a></li>
-                                    <li><a href="dashboard-bookings.html">Bookings</a></li>
-                                    <li><a href="dashboard-wallet.html">Wallet</a></li>
-                                    <li><a href="dashboard-my-listings.html">My Listings</a></li>
-                                    <li><a href="dashboard-reviews.html">Reviews</a></li>
-                                    <li><a href="dashboard-bookmarks.html">Bookmarks</a></li>
-                                    <li><a href="dashboard-add-listing.html">Add Listing</a></li>
-                                    <li><a href="dashboard-my-profile.html">My Profile</a></li>
-                                    <li><a href="dashboard-invoice.html">Invoice</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a href="#">Pages</a>
-                                <div class="mega-menu mobile-styles three-columns">
-
-                                    <div class="mega-menu-section">
-                                        <ul>
-                                            <li class="mega-menu-headline">Pages #1</li>
-                                            <li><a href="pages-user-profile.html"><i class="sl sl-icon-user"></i> User Profile</a></li>
-                                            <li><a href="pages-booking.html"><i class="sl sl-icon-check"></i> Booking Page</a></li>
-                                            <li><a href="pages-add-listing.html"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
-                                            <li><a href="pages-blog.html"><i class="sl sl-icon-docs"></i> Blog</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="mega-menu-section">
-                                        <ul>
-                                            <li class="mega-menu-headline">Pages #2</li>
-                                            <li><a href="pages-contact.html"><i class="sl sl-icon-envelope-open"></i> Contact</a></li>
-                                            <li><a href="pages-coming-soon.html"><i class="sl sl-icon-hourglass"></i> Coming Soon</a></li>
-                                            <li><a href="pages-404.html"><i class="sl sl-icon-close"></i> 404 Page</a></li>
-                                            <li><a href="pages-masonry-filtering.html"><i class="sl sl-icon-equalizer"></i> Masonry Filtering</a></li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="mega-menu-section">
-                                        <ul>
-                                            <li class="mega-menu-headline">Other</li>
-                                            <li><a href="pages-elements.html"><i class="sl sl-icon-settings"></i> Elements</a></li>
-                                            <li><a href="pages-pricing-tables.html"><i class="sl sl-icon-tag"></i> Pricing Tables</a></li>
-                                            <li><a href="pages-typography.html"><i class="sl sl-icon-pencil"></i> Typography</a></li>
-                                            <li><a href="pages-icons.html"><i class="sl sl-icon-diamond"></i> Icons</a></li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </li>
-
-                        </ul>
-                    </nav>
-                    <div class="clearfix"></div>
-                    <!-- Main Navigation / End -->
-
-                </div>
-                <!-- Left Side Content / End -->
-
-                <!-- Right Side Content / End -->
-                <div class="right-side">
-                    <!-- Header Widget -->
-                    <div class="header-widget">
-
-                        <!-- User Menu -->
-                        <div class="user-menu">
-                            <div class="user-name"><span><img src="/img/dashboard-avatar.jpg" alt=""></span>Hi, Tom!</div>
-                            <ul>
-                                <li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-                                <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages</a></li>
-                                <li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
-                                <li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
-                            </ul>
-                        </div>
-
-                        <a href="dashboard-add-listing.html" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a>
-                    </div>
-                    <!-- Header Widget / End -->
-                </div>
-                <!-- Right Side Content / End -->
-
-            </div>
-        </div>
-        <!-- Header / End -->
-
-    </header>
-    <div class="clearfix"></div>
     <!-- Header Container / End -->
 
 
@@ -193,43 +34,12 @@
         <!-- Navigation
         ================================================== -->
 
-        <!-- Responsive Navigation Trigger -->
-        <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
 
-        <div class="dashboard-nav">
-            <div class="dashboard-nav-inner">
-
-                <ul data-submenu-title="Main">
-                    <li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
-                    <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages <span class="nav-tag messages">2</span></a></li>
-                    <li><a href="dashboard-bookings.html"><i class="fa fa-calendar-check-o"></i> Bookings</a></li>
-                    <li><a href="dashboard-wallet.html"><i class="sl sl-icon-wallet"></i> Wallet</a></li>
-                </ul>
-
-                <ul data-submenu-title="Listings">
-                    <li class="active"><a><i class="sl sl-icon-layers"></i> 나의 수업 관리</a>
-                        <ul>
-                            <li><a href="dashboard-my-listings.html">대기중 <span class="nav-tag green">6</span></a></li>
-                            <li><a href="dashboard-my-listings.html">진행중 <span class="nav-tag yellow">1</span></a></li>
-                            <li><a href="dashboard-my-listings.html">완료 <span class="nav-tag red">2</span></a></li>
-                        </ul>
-                    </li>
-                    <li><a href="dashboard-reviews.html"><i class="sl sl-icon-star"></i> Reviews</a></li>
-                    <li><a href="dashboard-bookmarks.html"><i class="sl sl-icon-heart"></i> Bookmarks</a></li>
-                    <li><a href="dashboard-add-listing.html"><i class="sl sl-icon-plus"></i> Add Listing</a></li>
-                </ul>
-
-                <ul data-submenu-title="Account">
-                    <li><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
-                    <li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
-                </ul>
-
-            </div>
-        </div>
 
 
         <!-- Content
         ================================================== -->
+
         <div class="dashboard-content">
 
             <!-- Titlebar -->
@@ -254,7 +64,7 @@
                 <!-- Listings -->
                 <div class="col-lg-12 col-md-12">
                     <div class="dashboard-list-box margin-top-0">
-                        <h4> 대기중인 수업 목록</h4>
+                        <h4> 완료된 수업 목록</h4>
                         <ul id="wrap-list">
                             <%--===============================================--%>
                             <%--=============== CREATE DOM AREA ===============--%>
@@ -366,12 +176,12 @@
         var date = new Date();
         var currentDate = Number(date.getFullYear() + ("0"+(date.getMonth()+1)).slice(-2) + ("0"+date.getDate()).slice(-2));
 
-        for(service of services){
+        for(var service of services){
             var i = 0;
-            const endDate = Number((services.serviceEndDate).substr(0, 10).replace(/-/gi, '')); // 20190901
+            const endDate = Number((service.serviceEndDate).substr(0, 10).replace(/-/gi, '')); // 20190901
             if(currentDate < endDate){
                 // 서비스 종료일이 도래하지 않은 경우 Expired List에서 삭제함
-                services.splice(i);
+                services.splice(i, 1);
             }
             i++;
         }
@@ -381,19 +191,22 @@
 
     function serviceDelete(serviceId){
 
-
-        if(mock ==false){
-            Apis.deleteRequest(`/provider/my-listing/\''+serviceId+'\'/delete`).then(response =>{
-                initFetch();
-            });
-        } else {
-            <!-- delete 누를시 화면에서만 listings 삭제 -->
-
+        var confirmUser = confirm("나의 수업 기록에서 정말 삭제하시겠습니까?");
+        const prentItem = document.getElementById('wrap-list');
+        const childItem = document.getElementById('li-'+serviceId);
+        if(confirmUser){
+            prentItem.removeChild(childItem);
         }
+
+
+        // Apis.deleteRequest("/provider/my-listing/" + serviceId + "/delete").then(response =>{
+        //     initFetch();
+        // });
+
     }
 
     function serviceReadOnly(serviceId){
-        location.href = "/provider/my-listing/\''+serviceId+'\'/read";
+        location.href = "/provider/my-listing/"+serviceId+"/read";
     }
 
     // ==================================================================================================
@@ -405,14 +218,14 @@
         // Initialize Global Variable that Creating DOM
         var serviceContent = "";
 
-        for(service of services){
+        for(var service of services){
 
-            serviceContent += '<li><div class="list-box-listing"><div class="list-box-listing-img">'
-                +'<a href="" onclick="serviceReadOnly(service.serviceId);"><img src="'+service.serviceImgUri+'" alt=""></a></div>'
-                +'<div class="list-box-listing-content"><div class="inner"><h3><a href="#" onclick="serviceReadOnly(service.serviceId);">'
+            serviceContent += '<li id="li-'+service.serviceId+'"><div class="list-box-listing"><div class="list-box-listing-img">'
+                +'<a onclick="serviceReadOnly('+service.serviceId+');"><img src="'+service.serviceImgUri+'" alt=""></a></div>'
+                +'<div class="list-box-listing-content"><div class="inner"><h3><a onclick="serviceReadOnly('+service.serviceId+');">'
                 +service.serviceTitle+'</a></h3><span>'+service.serviceAddress.addressState+'</span>&nbsp;<span>'+service.serviceAddress.addressCity
                 +'</span>&nbsp;<span>'+service.serviceAddress.addressDong+'</span></div></div></div><div class="buttons-to-right">'
-                +'<a href="" class="button gray" onclick="serviceDelete(service.serviceId);"><i class="sl sl-icon-close"></i> 삭제</a></div></li>'
+                +'<a class="button gray" onclick="serviceDelete('+service.serviceId+');"><i class="sl sl-icon-close"></i> 삭제</a></div></li>'
         }
 
         document.querySelector('#wrap-list').innerHTML = serviceContent;
@@ -501,7 +314,7 @@
         Apis.postRequest(`/provider/expired-listing/`+page, reqJson).then(response => {
             console.log("여기에 들어왔니?");
             console.log(typeof response, response);
-            showServiceItem(response.items);
+            filterExpiredList(response.items);
             resetPagination(response.page, response.size, response.totalCount);
             console.log( page +"번째 My Listing 페이지를 요청한다.");
         });

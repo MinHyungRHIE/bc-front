@@ -15,8 +15,9 @@ public class LoginController {
 			value="/login",
 			method=RequestMethod.GET
 			)
-	public String loginForm() {
-		return "member-login";
+	public String loginForm()
+	{
+		return "member-login.tiles";
 	}
 	
 }

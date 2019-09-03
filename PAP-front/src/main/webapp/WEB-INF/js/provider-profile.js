@@ -3,7 +3,6 @@
 
 //1. mypage 페이지 왔을 때 저장되어 있는 data 불러오기.
 //2. 내 프로필 정보수정 버튼 클릭하면 입력한 데이터가 저장, 수정된 data 불러오기
-
 var callpassword;
 var memberId;
 
@@ -13,9 +12,11 @@ $(document).ready(function () {
     var unmeaningFulData = new Object();
     unmeaningFulData.req = "ohyes";
     Apis.postRequest('/provider/mypage',unmeaningFulData).then(response => {
-        console.log(response);//promise객체로 옴. 이제 그걸 풀어서, 화면에 뿌려줘야함.
+        console.log(response);
         showMypage(response);
-    }); //getrequest로 요청보냄. return으로 response=>response.json()으로 받아짐.
+        insertProfileImgResource('memberImg', response.memberImg);
+        insertText('memberJoinDate', profileData.memberJoinDate);
+    });
 
 }); //MyPage Loading END
 
@@ -31,6 +32,7 @@ function showMypage(profileData) {
     console.log(profileData.career);
     console.log(profileData.certi);
     console.log(profileData.memberJoinDate);
+    console.log(profileData.memberImg);
     console.log(profileData.memberPassword);
     console.log('===============================');
 
@@ -42,12 +44,11 @@ function showMypage(profileData) {
     $("textarea#introduce").val(profileData.introduce);
     //document.getElementById('introduce').value(val3);
 
+    //insertText('memberJoinDate', profileData.memberJoinDate);
 
-    insertText('memberJoinDate', profileData.memberJoinDate);
-
-    // insertProfileImgResource('memberImg', profileData[memberId].memberImg);
+    // insertProfileImgResource('memberImg', profileData.memberImg);
     callPW(profileData.memberPassword);
-    console.log(callPW(profileData.memberPassword));
+    //console.log(callPW(profileData.memberPassword));
 };
 
 // 1) 단일 값 맵핑
@@ -59,21 +60,23 @@ function insertValue(tag, column) {
     }
 };
 function insertText(tag, column) {
-    document.getElementById(tag).appendChild(document.createTextNode(column));
+    document.getElementById(tag).appendChild(document.createTextNode(column.substring(0,10)));
 };
 
 // // 2) 프로필 이미지 소스 맵핑 //로직 다시 짜보기(ClassName :콜랙션으로 됨)
-// function insertProfileImgResource(tag, column) {
-//
-// 	//document.getElementsByClassName(tag).setAttribute('src', column);
-// 	document.getElementById(tag).setAttribute('src', column);
-// 	var id2 = (tag + "1");
-// 	document.getElementById(id2).setAttribute('src', column);
-// 	// const imgTag = document.getElementById(tag);
-// 	// const imgItem = document.createElement('img');
-// 	// imgItem.setAttribute('src', column);
-// 	// imgTag.appendChild(imgItem);
-// };
+function insertProfileImgResource(tag, column) {
+
+    console.log(tag);
+    console.log(column);
+    //document.getElementsByClassName(tag).setAttribute('src', column);
+    document.getElementById(tag).setAttribute("src", "../img/"+column);
+    var id2 = (tag + "1");
+    document.getElementById(id2).setAttribute("src", "../img/"+column);
+    // const imgTag = document.getElementById(tag);
+    // const imgItem = document.createElement('img');
+    // imgItem.setAttribute('src', column);
+    // imgTag.appendChild(imgItem);
+};
 function callPW(column) {
     callpassword = column;
     return callpassword;
@@ -83,34 +86,52 @@ function callPW(column) {
 //=====================================2. MyPage Update=======================================
 //MyPage Update Button
 document.getElementById('buttonProfile').addEventListener('click', button_myprofile);
-
 function button_myprofile(){
     console.log("체크올 레알 투르 ?");
     if(checkAll() === true){
-        var providerMypageObject = new Object();
-        providerMypageObject.memberNickname = document.getElementById("memberNickname").value;
-        providerMypageObject.memberEmail = document.getElementById("memberEmail").value;
-        providerMypageObject.career = document.getElementById("career").value;
-        providerMypageObject.certi = document.getElementById("certi").value;
-        providerMypageObject.introduce = document.getElementById("introduce").value;
 
-        console.log("수정값 들어왔니");
-        console.log(typeof providerMypageObject, providerMypageObject); //수정 버튼 누를 시, 값들이 JSON으로 변환.
-        console.log("수정값 들어왔니1");
+        console.log("updateImg >> 여기 들어왔어?");
+        const myForm = document.querySelector('#myForm');
+        myForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const imgFormData = new FormData(e.target);
+            imgFormData.append('memberImg', myFile.files[0]);
 
-        Apis.updateProviderProfile(providerMypageObject).then(response => { //JSON으로 변환된 값들을 DB로 보낸다.
-            console.log("수정값 들어왔니22");
-            // Apis.getRequest('/customer/mypage').then(response =>{ //updatecustomerProfile함수에서 반환된 값(수정된 mypage 정보)를 다시 뿌려준다.
-            //     console.log("수정값 들어왔니33");
-            console.log(response);//promise객체로 옴. 이제 그걸 풀어서, 화면에 뿌려줘야함.
-            showMypage(response);
-            //Apis.getRequest('/provider/mypage').then(response =>{ //updateProviderProfile함수에서 반환된 값(수정된 mypage 정보)를 다시 뿌려준다.
-        }); alert("수정 완료!")
-    } else
+            console.log("imgFormData 확인 " + typeof imgFormData, imgFormData);
+            //for debugging
+            const obj = Object.fromEntries(imgFormData);
+            console.log('obj', obj);
+            //for debugging
+            Apis.updateProviderProfile(imgFormData).then(response => {
+                console.log("Apis 들어왔니");
+                console.log(response);
+                showMypage(response);
+                insertProfileImgResource('memberImg', response.memberImg);
+            });
+            alert("수정 완료!")
+        });
+    }else
         alert("필수입력 항목의 빈칸을 채워주세요~");
-
 };
-
+//////////////////////////////////////////////////
+//profile update
+const myFile = document.querySelector('#myFile');
+myFile.addEventListener('change', function(e) {
+    const files = e.target.files;
+    console.log('files >>', files);
+    previewFile(files[0]);
+    console.log("files[0]>>",files[0]);
+});
+function previewFile(file) {
+    var preview = document.querySelector('#memberImg');
+    var reader  = new FileReader();
+    reader.addEventListener("load", function () {
+        preview.src = reader.result;
+    }, false);
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
 ////////////////////////////////////////프로필수정 입력 여부 검사///////////////////////////////////////////////////////
 function checkAll() {
 
@@ -245,6 +266,56 @@ function nickValidity(val) {
 };
 
 
+// //Img업로드 DB memberImg 컬럼안에 이미지 이름만 저장되면 됨.
+// document.getElementById('imgUploadBtn').addEventListener('click',uploadFile);
+// var file = document.querySelector('#myFile.upload');
+//
+// function uploadFile() {
+//     console.log("클릭 시 uploadFile() 함수 실행 됨? ");
+//     if(!file.value) {
+//         console.log("uploadFile() file 값 없어? ");
+//         alert("이미지를 선택하세요~");
+//         return ;
+//     }else{
+//         console.log("uploadFile() file 값 있어? ");
+//         console.log(file.files[0]);
+//         return document.uploadForm.submit();
+//     }
+//
+// }
+//
+// function UpdateImg(){
+//     console.log("onsubmit 실행 되었나~ ");
+//     var myProfileImg = new FormData(document.getElementById('uploadForm'));
+//
+//     myProfileImg.append('myFile', files[0]);//FormData를 Json으로 보낸다
+//
+//     console.log(typeof myProfileImg, myProfileImg);
+//
+//     Apis.postRequest('/provider/mypage/profileImg', myProfileImg).then(response=>{
+//         //response는 json형식, 파일이름 or 파일 경로를 보내주면 됨.
+//         insertProfileImgResource('memberImg', response);
+//     })
+// }
+
+
+
+
+
+//     var _xml = new XMLHttpRequest();
+//     _xml.open('POST','/provider/mypage', true);
+//     _xml.onload = function(event){
+//         if(_xml.status == 200){
+//             alert('Uploaded');
+//         }else{
+//             alert('Error');
+//         }
+//     };
+//     _xml.send(filedata);
+// };
+
+
+
 /////////////////////////////////////////////비밀번호 관련 함수/////////////////////////////////////////////////////////
 
 //////////////////////////////////////////Update Password//////////////////////////////////////////////////////
@@ -255,16 +326,16 @@ function button_password() {
     console.log("여기 들어옴?");
     if (checkWritePW()===true && checkConfirmPW() ===true) {
         console.log("여기 들어옴?22")
-        var customerPwUpdateObject = new Object();
+        var providerPwUpdateObject = new Object();
 
-        customerPwUpdateObject.memberPassword = document.getElementById("memberPassword").value;
-        customerPwUpdateObject.newPassword = document.getElementById("newPassword").value;
-        customerPwUpdateObject.checkPassword = document.getElementById("checkPassword").value;
+        providerPwUpdateObject.memberPassword = document.getElementById("memberPassword").value;
+        providerPwUpdateObject.newPassword = document.getElementById("newPassword").value;
+        providerPwUpdateObject.checkPassword = document.getElementById("checkPassword").value;
 
-        console.log(typeof customerPwUpdateObject, customerPwUpdateObject);
+        console.log(typeof providerPwUpdateObject, providerPwUpdateObject);
         console.log("비밀번호를 서버에 보낸다아");
 
-        Apis.patchRequest('/customer/mypage',customerPwUpdateObject).then(response => {
+        Apis.patchRequest('/provider/mypage',providerPwUpdateObject).then(response => {
             if(response.res === "success"){
                 console.log("비밀번호 변경");
                 alert("비밀번호 수정 완료! ");
@@ -282,13 +353,6 @@ function button_password() {
 function checkWritePW(){
     console.log("여기 들어옴?33");
 
-    // const memberPassword = document.getElementById("memberPassword").value;
-    // const newPassword = document.getElementById("newPassword").value;
-    // const checkPassword = document.getElementById("checkPassword").value;
-    //
-    // console.log(memberPassword);
-    // console.log(newPassword);
-    // console.log(checkPassword);
     console.log(document.getElementById("memberPassword").value);
     console.log(document.getElementById("newPassword").value);
     console.log(document.getElementById("checkPassword").value);
