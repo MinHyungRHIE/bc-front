@@ -275,46 +275,53 @@ pageEncoding="UTF-8"%>
 						<div class="dashboard-list-box-static">
 
 							<!-- Avatar -->
-							<div class="edit-profile-photo">
-								<img id="memberImg" src="" alt="">
-								<div class="change-photo-btn">
-									<div class="photoUpload">
-										<span><i class="fa fa-upload"></i> Upload Photo</span>
-										<input type="file" class="upload" id="myFile" />
+							<!-- Avatar -->
+							
+								<div class="edit-profile-photo">
+									<img id="memberImg" src="" alt="">
+									<div class="change-photo-btn">
+										<div class="photoUpload">
+											<span><i class="fa fa-upload"></i>사진 변경</span>
+											<input type="file" class="upload" id="myFile" />
+										</div>
 									</div>
 								</div>
+
+							<form id="myForm" name="myForm">
+							<!-- 프로필 세부사항 -->
+							<div class="my-profile">
+
+								<label>닉네임</label>
+								<input type="text" name="memberNickname" id="memberNickname" value="" placeholder="닉네임을 입력하세요"  onKeyUp="nickValidity(this.value)" />
+								<label id = "checknick" class="check"></label>
+
+								<label>E-mail</label>
+								<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="E-Mail 을 입력하세요" onKeyUp="emailValidity(this.value)" />
+								<label id = "checkemail" class="check" ></label>
+
+								<label>경력</label>
+								<input type="text" name="career" id="career" value="" placeholder="경력을 입력하세요" />
+
+								<label>자격증</label>
+								<input type="text" name="certi" id="certi" value="" placeholder="자격증을 입력하세요" />
+
+								<label>자기소개</label>
+								<textarea name="introduce" id="introduce" cols="30" rows="10" onKeyUp="checkByte(this.form, 500)"></textarea>
+
+								<p class="data_count" style="font-size: smaller"><em id="introbyte" >0</em>/250 글자</p>
+
+								<!--							<textarea name="introduce"  cols="30" rows="10" >-->
+								<!--								자기소개 입력란 입니다-->
+								<!--							</textarea>-->
+
 							</div>
 
-							<!-- 프로필 세부사항 -->
-							<form id="myForm" name="myForm">
-								<div class="my-profile">
-
-									<label>닉네임</label>
-									<input type="text" name="memberNickname" id="memberNickname" value="" placeholder="닉네임을 입력하세요"  onKeyUp="nickValidity(this.value)" />
-									<label id = "checknick" class="check"></label>
-
-									<label>E-mail</label>
-									<input type="email" name="memberEmail" id="memberEmail" value="" placeholder="E-Mail 을 입력하세요" onKeyUp="emailValidity(this.value)" />
-									<label id = "checkemail" class="check" ></label>
-
-									<label>경력</label>
-									<input type="text" name="career" id="career" value="" placeholder="경력을 입력하세요" />
-
-									<label>자격증</label>
-									<input type="text" name="certi" id="certi" value="" placeholder="자격증을 입력하세요" />
-
-									<label>자기소개</label>
-									<textarea name="introduce" id="introduce" cols="30" rows="10" onKeyUp="checkByte(this.form, 500)"></textarea>
-
-									<p class="data_count" style="font-size: smaller"><em id="introbyte" >0</em>/250 글자</p>
-
-								</div>
-								<button id='buttonProfile' class='button margin-top-15' type="submit">마이페이지 수정</button>
+							<button id='buttonProfile' class='button margin-top-15' type = 'submit'>마이페이지 수정</button>
 							</form>
 						</div>
+
 					</div>
 				</div>
-
 
 
 				<!-- Change Password -->

@@ -39,13 +39,15 @@ function showMypage(profileData) {
     insertValue('memberEmail', profileData.memberEmail);
     insertValue('career', profileData.career);
     insertValue('certi', profileData.certi);
-
+    //insertValue('introduce', profileData.introduce);
     $("textarea#introduce").val(profileData.introduce);
+    //document.getElementById('introduce').value(val3);
 
     insertText('memberJoinDate', profileData.memberJoinDate);
 
+    // insertProfileImgResource('memberImg', profileData.memberImg);
     callPW(profileData.memberPassword);
-
+    //console.log(callPW(profileData.memberPassword));
 };
 
 // 1) 단일 값 맵핑
@@ -65,10 +67,14 @@ function insertProfileImgResource(tag, column) {
 
     console.log(tag);
     console.log(column);
-
-    document.getElementById(tag).setAttribute("src", "../img/"+column);
-    var id2 = (tag + "1");
-    document.getElementById(id2).setAttribute("src", "../img/"+column);
+	//document.getElementsByClassName(tag).setAttribute('src', column);
+	document.getElementById(tag).setAttribute("src", "../img/"+column);
+	var id2 = (tag + "1");
+	document.getElementById(id2).setAttribute("src", "../img/"+column);
+	// const imgTag = document.getElementById(tag);
+	// const imgItem = document.createElement('img');
+	// imgItem.setAttribute('src', column);
+	// imgTag.appendChild(imgItem);
 };
 function callPW(column) {
     callpassword = column;
@@ -79,75 +85,52 @@ function callPW(column) {
 //=====================================2. MyPage Update=======================================
 //MyPage Update Button
 document.getElementById('buttonProfile').addEventListener('click', button_myprofile);
-
 function button_myprofile(){
-    console.log("체크올 레알 투르 ?");
-    if(checkAll() === true){
-
-        //var providerMypageObject = new Object();
-        //providerMypageObject.memberNickname = document.getElementById("memberNickname").value;
-        //providerMypageObject.memberEmail = document.getElementById("memberEmail").value;
-        //providerMypageObject.career = document.getElementById("career").value;
-        //providerMypageObject.certi = document.getElementById("certi").value;
-        //providerMypageObject.introduce = document.getElementById("introduce").value;
-
-        console.log("updateImg >> 여기 들어왔어?");
-        const myForm = document.querySelector('#myForm');
-        myForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const imgFormData = new FormData(e.target);
-
-            imgFormData.append('memberImg', myFile.files[0]);
-
-            console.log("2222 " + typeof imgFormData, imgFormData);
-
-            // for debugging
-            //const obj = Object.fromEntries(imgFormData);
-            //console.log('obj', obj);
-            // for debugging
-
-            console.log("수정값 들어왔니");
-            //console.log(typeof obj, obj);
-            //console.log("수정값 들어왔니1");
-
-            Apis.updateProviderProfile(imgFormData).then(response => {
-                console.log("수정값 들어왔니22");
-                console.log(response);
-                showMypage(response);
-                insertProfileImgResource('memberImg', response.memberImg);
-            });
-            alert("수정 완료!")
-
-            });
-        }else
-        alert("필수입력 항목의 빈칸을 채워주세요~");
-
-    };
+ console.log("체크올 레알 투르 ?");
+ if(checkAll() === true){
+    
+     console.log("updateImg >> 여기 들어왔어?");
+     const myForm = document.querySelector('#myForm');
+     myForm.addEventListener('submit', function(e) {
+         e.preventDefault();
+         const imgFormData = new FormData(e.target);
+         imgFormData.append('memberImg', myFile.files[0]);
+         
+         console.log("imgFormData 확인 " + typeof imgFormData, imgFormData);
+         //for debugging
+         const obj = Object.fromEntries(imgFormData);
+         console.log('obj', obj);
+         //for debugging
+         Apis.updateProviderProfile(imgFormData).then(response => {
+             console.log("Apis 들어왔니");
+             console.log(response);
+             showMypage(response);
+             insertProfileImgResource('memberImg', response.memberImg);
+         });
+         alert("수정 완료!")
+         });
+     }else
+     alert("필수입력 항목의 빈칸을 채워주세요~");
+ };
 //////////////////////////////////////////////////
 //profile update
-    const myFile = document.querySelector('#myFile');
-    myFile.addEventListener('change', function(e) {
-        const files = e.target.files;
-        console.log('files >>', files);
-        previewFile(files[0]);
-        console.log("files[0]>>",files[0]);
-    });
-
-    function previewFile(file) {
-        var preview = document.querySelector('#memberImg');
-        var reader  = new FileReader();
-
-        reader.addEventListener("load", function () {
-            preview.src = reader.result;
-        }, false);
-
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    }
-
-
+ const myFile = document.querySelector('#myFile');
+ myFile.addEventListener('change', function(e) {
+     const files = e.target.files;
+     console.log('files >>', files);
+     previewFile(files[0]);
+     console.log("files[0]>>",files[0]);
+ });
+ function previewFile(file) {
+     var preview = document.querySelector('#memberImg');
+     var reader  = new FileReader();
+     reader.addEventListener("load", function () {
+         preview.src = reader.result;
+     }, false);
+     if (file) {
+         reader.readAsDataURL(file);
+     }
+ }
 ////////////////////////////////////////프로필수정 입력 여부 검사///////////////////////////////////////////////////////
 function checkAll() {
 
@@ -342,16 +325,16 @@ function button_password() {
     console.log("여기 들어옴?");
     if (checkWritePW()===true && checkConfirmPW() ===true) {
         console.log("여기 들어옴?22")
-        var customerPwUpdateObject = new Object();
+        var providerPwUpdateObject = new Object();
 
-        customerPwUpdateObject.memberPassword = document.getElementById("memberPassword").value;
-        customerPwUpdateObject.newPassword = document.getElementById("newPassword").value;
-        customerPwUpdateObject.checkPassword = document.getElementById("checkPassword").value;
+        providerPwUpdateObject.memberPassword = document.getElementById("memberPassword").value;
+        providerPwUpdateObject.newPassword = document.getElementById("newPassword").value;
+        providerPwUpdateObject.checkPassword = document.getElementById("checkPassword").value;
 
-        console.log(typeof customerPwUpdateObject, customerPwUpdateObject);
+        console.log(typeof providerPwUpdateObject, providerPwUpdateObject);
         console.log("비밀번호를 서버에 보낸다아");
 
-        Apis.patchRequest('/customer/mypage',customerPwUpdateObject).then(response => {
+        Apis.patchRequest('/provider/mypage',providerPwUpdateObject).then(response => {
             if(response.res === "success"){
                 console.log("비밀번호 변경");
                 alert("비밀번호 수정 완료! ");
@@ -369,13 +352,6 @@ function button_password() {
 function checkWritePW(){
     console.log("여기 들어옴?33");
 
-    // const memberPassword = document.getElementById("memberPassword").value;
-    // const newPassword = document.getElementById("newPassword").value;
-    // const checkPassword = document.getElementById("checkPassword").value;
-    //
-    // console.log(memberPassword);
-    // console.log(newPassword);
-    // console.log(checkPassword);
     console.log(document.getElementById("memberPassword").value);
     console.log(document.getElementById("newPassword").value);
     console.log(document.getElementById("checkPassword").value);

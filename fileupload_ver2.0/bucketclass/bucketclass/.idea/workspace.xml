@@ -42,6 +42,15 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\fileupload_ver2.0\bucketclass\bucketclass\src\main\webapp\WEB-INF\views" />
+      <recent name="C:\fileupload_ver2.0\bucketclass\bucketclass\src\main\webapp\WEB-INF\js" />
+      <recent name="C:\fileupload_ver2.0\bucketclass\bucketclass\src\main\java\com\pap\bucketclass\service" />
+      <recent name="C:\fileupload_ver2.0\bucketclass\bucketclass\src\main\java\com\pap\bucketclass\model" />
+      <recent name="C:\fileupload_ver2.0\bucketclass\bucketclass\src\main\java\com\pap\bucketclass\controller" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -162,6 +171,13 @@
       <option name="presentableId" value="Default" />
       <updated>1567488287350</updated>
       <workItem from="1567488289493" duration="1654000" />
+      <workItem from="1567492025234" duration="534000" />
+      <workItem from="1567501929024" duration="1495000" />
+      <workItem from="1567503523988" duration="447000" />
+      <workItem from="1567504222722" duration="6474000" />
+      <workItem from="1567511231391" duration="551000" />
+      <workItem from="1567513504647" duration="3199000" />
+      <workItem from="1567516961510" duration="364000" />
     </task>
     <servers />
   </component>
