@@ -329,7 +329,7 @@
                       }); //MyPage Loading END */
 
          Apis.postRequest('/service-listing').then(response => {
-            console.log('14786192981242221123112121221');
+            console.log('14786192981242221123112121221 >>',response);
             showServiceItem(response.items);
             resetPagination(response.page, response.size, response.totalCount);
          });
@@ -440,10 +440,10 @@
 
       console.log(typeof searchConditionObject, searchConditionObject);
       Apis.searchRequest(searchConditionObject).then(response => {
+         console.log("data 들어옴");
          showServiceItem(response.items);
          resetPagination(response.page, response.size, response.totalCount);
       });
-
    }
 
 

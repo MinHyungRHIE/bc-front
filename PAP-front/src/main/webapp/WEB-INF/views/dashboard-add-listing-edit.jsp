@@ -188,6 +188,7 @@
 
 <!--								<div type="text" class="tags-input" data-name="tags-input"></div>-->
 									<input type="text" id="testInput" />
+								<p id="sorry"></p>
 
 							</div>
 						</div>

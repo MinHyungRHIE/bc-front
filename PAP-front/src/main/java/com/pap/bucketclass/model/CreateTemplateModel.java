@@ -19,8 +19,8 @@ public class CreateTemplateModel implements Serializable{
 	private String accountNumber;
 	
 	@JsonProperty("hashTag")
-	private List<String> hashTag;
-//	private String hashTag;
+//	private List<String> hashTag;
+	private String hashTag;
 	
 	@JsonProperty("serviceimguri")
 //	private List<String> serviceImgUri;
@@ -84,11 +84,11 @@ public class CreateTemplateModel implements Serializable{
 //		this.serviceImgUri = serviceImgUri;
 //	}
 
-	public List<String> getHashTag() {
+	public String getHashTag() {
 		return hashTag;
 	}
 
-	public void setHashTag(List<String> hashTag) {
+	public void setHashTag(String hashTag) {
 		this.hashTag = hashTag;
 	}
 
@@ -163,7 +163,7 @@ public class CreateTemplateModel implements Serializable{
 		serviceTemplate.setServiceTitle(serviceTitle);
 		serviceTemplate.setAccountBank(accountBank);
 		serviceTemplate.setAccountNumber(accountNumber);
-//		serviceTemplate.setHashTag(hashTag);
+		serviceTemplate.setHashTag(hashTag);
 //		serviceTemplate.setServiceImgUri(serviceImgUri);
 		serviceTemplate.setServiceDescription(serviceDescription);
 		return serviceTemplate;

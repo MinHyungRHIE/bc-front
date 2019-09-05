@@ -74,7 +74,7 @@ public class ServicesController {
 			@RequestParam(
 					name="categorySubject",
 					required=false) String categorySubject) {
-		int size = 3, page = 1; //default
+		int size = 5, page = 1; //default
 		//정렬 : (기본) 최근 등록순
 
 		if(Optional.ofNullable(serviceTitle).isPresent()){
@@ -110,7 +110,7 @@ public class ServicesController {
 			@RequestParam(
 					name="categorySubject",
 					required=false) String categorySubject) {
-		int size = 3; int page = 1;
+		int size = 5; int page = 1;
 		if(pageStr != null) {
 			page = Integer.parseInt(pageStr);
 		}
@@ -184,7 +184,8 @@ public class ServicesController {
 			@PathVariable(
 					name="serviceId",
 					required=false) int serviceId){
-		System.out.println("Post 들왔어");
+		System.out.println("post 들어옴");
+		System.out.println(listingService.sendToSinglePage(serviceId));
 		return listingService.sendToSinglePage(serviceId);
 	}
 
@@ -209,7 +210,7 @@ public class ServicesController {
 					MediaType.APPLICATION_ATOM_XML_VALUE
 			})
 	public @ResponseBody ResultItems<ServiceTemplate> providerPageableInitServicePending(@RequestBody RequestModel requestModel){
-		int size = 3, page = 1; //default
+		int size = 5, page = 1; //default
 		//정렬 : (기본) 최근 등록순
 		
 		String defaultSort ="serviceModifiedDate";
@@ -230,7 +231,7 @@ public class ServicesController {
 			@RequestBody RequestModel requestModel,
 			@PathVariable("page") int page
 			){
-		int size = 3;
+		int size = 5;
 
 		String defaultSort ="serviceModifiedDate";
 		Pageable pageable = PageRequest.of(page - 1, size, Sort.by(defaultSort).descending());
@@ -255,7 +256,7 @@ public class ServicesController {
 					MediaType.APPLICATION_ATOM_XML_VALUE
 			})
 	public @ResponseBody ResultItems<Services> providerPageableInitServiceActive(@RequestBody RequestModel requestModel){
-		int size = 3, page = 1; //default
+		int size = 5, page = 1; //default
 		//정렬 : (기본) 최근 등록순
 
 		String defaultSort ="serviceModifiedDate";
@@ -276,7 +277,7 @@ public class ServicesController {
 			@RequestBody RequestModel requestModel,
 			@PathVariable("page") int page
 			){
-		int size = 3;
+		int size = 5;
 
 		String defaultSort ="serviceModifiedDate";
 		Pageable pageable = PageRequest.of(page - 1, size, Sort.by(defaultSort).descending());
@@ -302,7 +303,7 @@ public class ServicesController {
 					MediaType.APPLICATION_ATOM_XML_VALUE
 			})
 	public @ResponseBody ResultItems<Services> providerPageableInitServiceExpired(@RequestBody RequestModel requestModel){
-		int size = 3, page = 1; //default
+		int size = 5, page = 1; //default
 		//정렬 : (기본) 최근 등록순
 
 		String defaultSort ="serviceModifiedDate";
@@ -323,7 +324,7 @@ public class ServicesController {
 			@RequestBody RequestModel requestModel,
 			@PathVariable("page") int page
 			){
-		int size = 3;
+		int size = 5;
 
 		String defaultSort ="serviceModifiedDate";
 		Pageable pageable = PageRequest.of(page - 1, size, Sort.by(defaultSort).descending());

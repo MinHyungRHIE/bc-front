@@ -683,7 +683,7 @@ $(".opening-day.js-demo-hours .chosen-select").each(function() {
 		Apis.postRequest(`/provider/add-service`, sendJson).then(response => {
 			if(response.res === "success"){
 				alert("나의 수업 템플릿에 저장 되었습니다!");
-				location.href = "/"; //원래 my-listing 페이지로 이동해야함
+				location.href = "/provider/pending-listing";
 			} else {
 				alert("다시 작성해주세요");
 			}

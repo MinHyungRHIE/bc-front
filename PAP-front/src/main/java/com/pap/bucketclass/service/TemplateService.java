@@ -47,7 +47,7 @@ public class TemplateService{
 		serviceTemplate.setServiceTitle(toUpdate.getServiceTitle());
 		serviceTemplate.setAccountBank(toUpdate.getAccountBank());
 		serviceTemplate.setAccountNumber(toUpdate.getAccountNumber());
-//		serviceTemplate.setHashTag(hashTag);
+		serviceTemplate.setHashTag(toUpdate.getHashTag());
 //		serviceTemplate.setServiceImgUri(serviceImgUri);
 		serviceTemplate.setServiceDescription(toUpdate.getServiceDescription());
 		

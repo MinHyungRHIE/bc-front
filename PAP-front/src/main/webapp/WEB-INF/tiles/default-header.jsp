@@ -72,9 +72,6 @@
 </header>
 <div class="clearfix"></div>
 <!-- Header Container / End -->
-
-<script src="/js/redirect.js"></script>
-<script src="/js/apis.js"></script>
 <script>
 
 	var userRoleData ="<%=roleStr%>";

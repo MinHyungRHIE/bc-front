@@ -13,9 +13,3 @@
     </div>
 </div>
 </body>
-
-<!--   Core JS Files and PerfectScrollbar library inside jquery.ui   -->
-
-<script src="js/bootstrap/jquery-ui.min.js" type="text/javascript"></script>
-<script src="js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
-</html>

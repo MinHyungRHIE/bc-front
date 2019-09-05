@@ -94,13 +94,15 @@
                 <!-- Gallery / END -->
 
             <!-- Location -->
+
             <div id="listing-location" class="listing-section" style="margin-bottom: 30px">
                <div class="add-listing-headline">
                   <h3><i class="sl sl-icon-location"></i>위치</h3>
                </div>
                <div id="singleListingMap-container">
-                  <div id="singleListingMap" data-latitude="40.70437865245596" data-longitude="-73.98674011230469" data-map-icon="im im-icon-Hamburger"></div>
-                  <a href="#" id="streetView">Street View</a>
+                  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnjyzTcZqscCrPT-FEps1WGuteqYGD20w&callback=initMap"></script>
+                  <div id="singleListingMap" data-latitude="37.5524589" data-longitude="126.93782620000002" data-map-icon="im im-icon-Location-2"></div>
+
                </div>
             </div>
             <!-- Location / End -->
@@ -203,7 +205,6 @@
 <script type="text/javascript" src="/js/apis.js"></script>
 
 <!-- Maps -->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
 <script type="text/javascript" src="/js/infobox.min.js"></script>
 <script type="text/javascript" src="/js/markerclusterer.js"></script>
 <script type="text/javascript" src="/js/maps.js"></script>
@@ -419,9 +420,8 @@ $(".time-slot").each(function() {
       insertProfileImgResource('member_img', serviceData.memberImg);
       insertNewLineValue('introduce', serviceData.introduce);
       insertNewLineValue('service_description', serviceData.serviceDescription);
- 
-      /*       insertServiceImgResource('service_img_uri', serviceData.serviceImgUri); */
-/*       insertHashTag(serviceData); */
+      insertServiceImgResource('service_img_uri', serviceData.serviceImgUri);
+      insertHashTag(serviceData);
 
    }
 
@@ -435,32 +435,34 @@ $(".time-slot").each(function() {
    // 2) 해쉬태그 맵핑
    function insertHashTag(serviceData) {
 
-       var hashTagItem = document.getElementById('hashTag');
+      var hashTagItem = document.getElementById('hashTag');
+      var hash = serviceData.hashTag;
+      var arrHash = hash.split("⨂");
 
-      for (var i = 0; i < serviceData .hashTag.length; i++) {
+      for (var i = 0; i < arrHash.length; i++) {
 
          hashTagItem.appendChild(document.createTextNode(' #'));
          hashTagItem.appendChild(document.createElement('span')
-                     .appendChild(document.createTextNode(serviceData.hashTag[i])));
+                 .appendChild(document.createTextNode(arrHash[i])));
       }
    }
 
    // 3) 서비스 이미지 소스 맵핑
    function insertServiceImgResource(tag, column) {
 
+
+      var arrImg = column.split("⨂");
       var imgTag = document.getElementById(tag);
 
-      for(var i = 0; i < column.length; i++){
+      for(var i = 0; i < arrImg.length; i++){
 
          const serviceImg = document.createElement('a');
-         serviceImg.setAttribute('href', column[i]);
-         serviceImg.setAttribute('data-background-image', column[i]);
+         serviceImg.setAttribute('href', arrImg[i]);
+         serviceImg.setAttribute('data-background-image', arrImg[i]);
          serviceImg.setAttribute('class', 'item mfp-gallery');
-         serviceImg.setAttribute('style','background-image: url("'+column[i]+'"); width: 476px;');
+         serviceImg.setAttribute('style','background-image: url("'+arrImg[i]+'"); width: 476px;');
          imgTag.appendChild(serviceImg);
-
       }
-
    }
 
    // 4) 프로필 이미지 소스 맵핑

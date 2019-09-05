@@ -20,7 +20,7 @@
 <body>
 
 <!-- Wrapper -->
-<div id="wrapper">
+<div class="container" id="wrapper">
 
     <!-- Header Container
     ================================================== -->
@@ -29,7 +29,7 @@
 
 
     <!-- Dashboard -->
-    <div id="dashboard">
+    <div class="container" id="dashboard">
 
         <!-- Navigation
         ================================================== -->
@@ -92,10 +92,7 @@
                 <!-- Pagination / End -->
 
 
-                <!-- Copyrights -->
-                <div class="col-md-12">
-                    <div class="copyrights">© 2019 Bucket Class. All Rights Reserved.</div>
-                </div>
+
             </div>
         </div>
         <!-- Content / End -->

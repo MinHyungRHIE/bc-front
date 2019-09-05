@@ -20,7 +20,7 @@
 <body>
 
 <!-- Wrapper -->
-<div id="wrapper">
+<div class="container" id="wrapper">
 
     <!-- Header Container
     ================================================== -->
@@ -29,7 +29,7 @@
 
 
     <!-- Dashboard -->
-    <div id="dashboard">
+    <div class="container" id="dashboard">
 
         <!-- Navigation
         ================================================== -->
@@ -88,10 +88,6 @@
                 </div>
                 <!-- Pagination / End -->
 
-                <!-- Copyrights -->
-                <div class="col-md-12">
-                    <div class="copyrights">© 2019 Bucket Class. All Rights Reserved.</div>
-                </div>
             </div>
         </div>
         <!-- Content / End -->
@@ -163,85 +159,124 @@
         showServiceItem(serviceData.items);
         resetPagination(serviceData.page, serviceData.size, serviceData.totalCount);
     }
+</script>
 
-
+<%--
     // ==================================================================================================
     // ======================================= LIST HANDLER ==========================================
     // ==================================================================================================
+--%>
 
-    function templateRegist(serviceTemplateId){
-    	
-    	
-    	// console.log(typeof service, service);
-    	//
-        // delete service.serviceCategory;
-        // delete service.hashTag;
-        // delete service.serviceImgUri;
-        //
-        // var validateRegister = true;
-        //
-        // for(key in service){
-        //     if(service[key] == null){
-        //         validateRegister == false;
-        //         break;
-        //     }
-        // }
+    <script>
+        function templateRegistBack(serviceTemplateId){
+            alert("수업을 개설하기 위해서는 모든 항목이 입력되어야 합니다. 수업 수정 페이지로 이동합니다.");
+            templateEdit(serviceTemplateId);
+        }
+    </script>
 
-        // if(validateRegister == false){
-        //     alert("수업을 개설하기 위해서는 모든 항목이 입력되어야 합니다. 수업 수정 페이지로 이동합니다.");
-        //     templateEdit(serviceTemplateId);
-        // } else {
+
+    <script>
+        function templateRegistGo(serviceTemplateId){
             alert("수업을 개설하기 위해 등록 페이지로 이동합니다.");
             location.href = "/provider/my-template/"+ serviceTemplateId + "/regist";
+        }
+    </script>
+
+
+
+
+    <script>
+
+        // function templateRegist(serviceTemplateId){
+        //
+        //
+        // 	// console.log(typeof service, service);
+        // 	//
+        //     // delete service.serviceCategory;
+        //     // delete service.hashTag;
+        //     // delete service.serviceImgUri;
+        //     //
+        //     // var validateRegister = true;
+        //     //
+        //     // for(key in service){
+        //     //     if(service[key] == null){
+        //     //         validateRegister == false;
+        //     //         break;
+        //     //     }
+        //     // }
+        //
+        //     // if(validateRegister == false){
+        //     //     alert("수업을 개설하기 위해서는 모든 항목이 입력되어야 합니다. 수업 수정 페이지로 이동합니다.");
+        //     //     templateEdit(serviceTemplateId);
+        //     // } else {
+        //         alert("수업을 개설하기 위해 등록 페이지로 이동합니다.");
+        //         location.href = "/provider/my-template/"+ serviceTemplateId + "/regist";
+        //     // }
         // }
-    }
 
-    function templateEdit(serviceTemplateId){
-        location.href = "/provider/my-template/"+ serviceTemplateId + "/update";
-    }
-
-    function templateDelete(serviceTemplateId){
-
-
-        var confirmUser = confirm("나의 수업 기록에서 정말 삭제하시겠습니까?");
-        const prentItem = document.getElementById('wrap-list');
-        const childItem = document.getElementById('li-'+serviceTemplateId);
-        if(confirmUser){
-            prentItem.removeChild(childItem);
+        function templateEdit(serviceTemplateId){
+            location.href = "/provider/my-template/"+ serviceTemplateId + "/update";
         }
 
-        // Apis.deleteRequest("/provider/my-template/"+ serviceTemplateId + "/delete").then(response =>{
-        //     initFetch();
-        // });
-    }
+        function templateDelete(serviceTemplateId){
 
-    function templateReadOnly(serviceTemplateId){
-        location.href = "/provider/my-template/"+ serviceTemplateId + "/read";
-    }
 
+            var confirmUser = confirm("나의 수업 기록에서 정말 삭제하시겠습니까?");
+            const prentItem = document.getElementById('wrap-list');
+            const childItem = document.getElementById('li-'+serviceTemplateId);
+            if(confirmUser){
+                prentItem.removeChild(childItem);
+            }
+
+            // Apis.deleteRequest("/provider/my-template/"+ serviceTemplateId + "/delete").then(response =>{
+            //     initFetch();
+            // });
+        }
+
+        function templateReadOnly(serviceTemplateId){
+            location.href = "/provider/my-template/"+ serviceTemplateId + "/read";
+        }
+    </script>
+
+<%--
     // ==================================================================================================
     // ======================================= CREATE LIST DOM ==========================================
     // ==================================================================================================
+--%>
 
-    function showServiceItem(services) {
+    <script>
+        function showServiceItem(services) {
 
-        // Initialize Global Variable that Creating DOM
-        var serviceContent = "";
-        
-        for(var service of services){
-        	
-            serviceContent += '<li id="li-'+service.serviceTemplateId+'"><div class="list-box-listing"><div class="list-box-listing-img">'
-                +'<a onclick="templateReadOnly('+service.serviceTemplateId+');"><img src="'+service.serviceImgUri+'" alt=""></a></div>'
-                +'<div class="list-box-listing-content"><div class="inner"><h3><a href="#" onclick="templateReadOnly('+service.serviceTemplateId+');">'
-                +service.serviceTitle+'</a></h3></div></div></div><div class="buttons-to-right">'
-                +'<a class="button gray" onclick="templateRegist('+service.serviceTemplateId+');"><i class="sl sl-icon-action-redo"></i> 등록</a>'
-                +'<a class="button gray" onclick="templateEdit('+service.serviceTemplateId+');"><i class="sl sl-icon-note"></i> 수정</a>'
-                +'<a class="button gray" onclick="templateDelete('+service.serviceTemplateId+');"><i class="sl sl-icon-close"></i> 삭제</a></div></li>'
+            // Initialize Global Variable that Creating DOM
+            var serviceContent = "";
+
+            for(var service of services){
+                var a = true;
+                if(service.serviceTitle =="" ||
+                    service.accountBank =="" ||
+                    service.accountNumber =="" ||
+                    service.serviceDescription ==""
+                ){
+                    a= "templateRegistBack";
+                }else{
+                    a= "templateRegistGo";
+                }
+
+                serviceContent += '<li id="li-'+service.serviceTemplateId+'"><div class="list-box-listing"><div class="list-box-listing-img">'
+                    +'<a onclick="templateReadOnly('+service.serviceTemplateId+');"><img src="'+service.serviceImgUri+'" alt=""></a></div>'
+                    +'<div class="list-box-listing-content"><div class="inner"><h3><a href="#" onclick="templateReadOnly('+service.serviceTemplateId+');">'
+                    +service.serviceTitle+'</a></h3></div></div></div><div class="buttons-to-right">'
+                    // +'<a class="button gray" onclick="templateRegist('+serviceTemplateId+');"><i class="sl sl-icon-action-redo"></i> 등록</a>'
+                    +'<a class="button gray" onclick="'+a+'('+service.serviceTemplateId+');"><i class="sl sl-icon-action-redo"></i> 등록</a>'
+                    +'<a class="button gray" onclick="templateEdit('+service.serviceTemplateId+');"><i class="sl sl-icon-note"></i> 수정</a>'
+                    +'<a class="button gray" onclick="templateDelete('+service.serviceTemplateId+');"><i class="sl sl-icon-close"></i> 삭제</a></div></li>'
+            }
+
+
+            document.querySelector('#wrap-list').innerHTML = serviceContent;
+
         }
 
-        document.querySelector('#wrap-list').innerHTML = serviceContent;
-
-    }
 
     // ==================================================================================================
     // ==================================== CREATE LIST DOM / END ====================================

@@ -12,8 +12,8 @@
 		  content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/main-color.css" id="colors">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/main-color.css" id="colors">
 	<link rel="icon" type="image/png" sizes="32x32"
 		  href="/img/favicon-32x32.png">
 
@@ -490,29 +490,28 @@
 
 
 <!-- Scripts -->
-<script type="text/javascript" src="/js/jquery-2.2.0.min.js"></script>
-<script type="text/javascript" src="/js/mmenu.min.js"></script>
-<script type="text/javascript" src="/js/chosen.min.js"></script>
-<script type="text/javascript" src="/js/slick.min.js"></script>
-<script type="text/javascript" src="/js/rangeslider.min.js"></script>
-<script type="text/javascript" src="/js/magnific-popup.min.js"></script>
-<script type="text/javascript" src="/js/waypoints.min.js"></script>
-<script type="text/javascript" src="/js/counterup.min.js"></script>
-<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/js/tooltips.min.js"></script>
-<script type="text/javascript" src="/js/custom.js"></script>
-<script type="text/javascript" src="/js/apis.js"></script>
-<script src="/js/redirect.js"></script>
-<script type="text/javascript" src="/js/mainSearch.js"></script>
-<script
-		src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
+<script type="text/javascript" src="../js/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="../js/mmenu.min.js"></script>
+<script type="text/javascript" src="../js/chosen.min.js"></script>
+<script type="text/javascript" src="../js/slick.min.js"></script>
+<script type="text/javascript" src="../js/rangeslider.min.js"></script>
+<script type="text/javascript" src="../js/magnific-popup.min.js"></script>
+<script type="text/javascript" src="../js/waypoints.min.js"></script>
+<script type="text/javascript" src="../js/counterup.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/tooltips.min.js"></script>
+<script type="text/javascript" src="../js/custom.js"></script>
+<script type="text/javascript" src="../js/apis.js"></script>
+<script src="../js/redirect.js"></script>
+<script type="text/javascript" src="../js/mainSearch.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
 
 <script>
 
 </script>
 
 <!-- Style Switcher -->
-<script src="/js/switcher.js"></script>
+<script src="../js/switcher.js"></script>
 
 <div id="style-switcher">
 	<h2>
